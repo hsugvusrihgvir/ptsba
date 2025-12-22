@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -86,12 +86,14 @@
 
     <!-- Сервис -->
     <section class="section section--light">
+        <section class="section section--light" data-parallax="services">
         <div class="section__inner container">
             <header class="section__header">
                 <h2 class="section__title">Чем мы занимаемся</h2>
             </header>
 
             <div class="grid grid--3">
+
                 <article class="card card--service">
                     <h3 class="card__title">Обучение пилотов агродронов</h3>
                     <p class="card__text">
@@ -459,26 +461,7 @@
         </div>
     </div>
 
-    <script>
-        // Обновление года в футере
-        (function () {
-            var y = new Date().getFullYear();
-            var el = document.getElementById('js-year');
-            if (el) el.textContent = y;
-        })();
-
-        // Простейший тоггл-меню для мобилок
-        (function () {
-            var toggle = document.querySelector('.site-nav__toggle');
-            var list = document.querySelector('.site-nav__list');
-            if (!toggle || !list) return;
-            toggle.addEventListener('click', function () {
-                var expanded = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', String(!expanded));
-                list.classList.toggle('site-nav__list--open');
-            });
-        })();
-    </script>
+    <script defer src="assets/js/app.js"></script>
 </footer>
 
 </body>
