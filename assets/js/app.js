@@ -8,7 +8,7 @@
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-    // ========= 0) Loader (интро при загрузке) =========
+    // ========= 0) Loader =========
     (() => {
         const loader = document.createElement("div");
         loader.className = "page-loader";
@@ -26,19 +26,18 @@
         window.addEventListener("load", () => {
             document.documentElement.classList.remove("is-loading");
             document.documentElement.classList.add("is-loaded");
-
             loader.classList.add("is-hide");
             setTimeout(() => loader.remove(), 550);
         });
     })();
 
-    // ========= 1) Год в футере =========
+    // ========= 1) Year =========
     (() => {
         const el = $("#js-year");
         if (el) el.textContent = String(new Date().getFullYear());
     })();
 
-    // ========= 2) Бургер =========
+    // ========= 2) Burger =========
     (() => {
         const toggle = $(".site-nav__toggle");
         const list = $(".site-nav__list");
@@ -72,7 +71,7 @@
         });
     })();
 
-    // ========= 3) Плавный скролл =========
+    // ========= 3) Smooth anchors =========
     (() => {
         const links = $$('a[href^="#"]');
         links.forEach((a) => {
@@ -98,7 +97,7 @@
         });
     })();
 
-    // ========= 4) Хедер при скролле =========
+    // ========= 4) Header shadow =========
     (() => {
         const header = $(".site-header");
         if (!header) return;
@@ -111,7 +110,7 @@
         window.addEventListener("scroll", onScroll, { passive: true });
     })();
 
-    // ========= 5) Активный пункт меню по секциям =========
+    // ========= 5) Active nav =========
     (() => {
         const navLinks = $$(".site-nav__link").filter((a) =>
             a.getAttribute("href")?.startsWith("#")
@@ -177,31 +176,36 @@
         items.forEach((el) => obs.observe(el));
     })();
 
-    // ========= 7) Параллакс по скроллу: hero + “Чем мы занимаемся” =========
+    // ========= 7) Parallax vars for hero + services + all photos =========
     (() => {
         if (prefersReducedMotion) return;
 
         const hero = $(".hero");
 
-        // Секция "Чем мы занимаемся":
-        // 1) если ты добавила data-parallax="services" — возьмём её
-        // 2) иначе fallback: первая .section.section--light
+        // если есть — прям идеально:
+        // <section ... data-parallax="services">
         const services =
             $('.section[data-parallax="services"]') || $(".section.section--light");
 
+        const medias = $$(".section__media");
+
         const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-        const apply = (el) => {
-            if (!el) return;
+        const computeT = (el) => {
             const r = el.getBoundingClientRect();
             const vh = window.innerHeight;
-            const t = clamp01((vh - r.top) / (vh + r.height));
-            el.style.setProperty("--par", String(t));
+            return clamp01((vh - r.top) / (vh + r.height));
+        };
+
+        const applyVar = (el) => {
+            if (!el) return;
+            el.style.setProperty("--par", String(computeT(el)));
         };
 
         const onScroll = () => {
-            apply(hero);
-            apply(services);
+            applyVar(hero);
+            applyVar(services);
+            medias.forEach(applyVar);
         };
 
         onScroll();
@@ -209,31 +213,40 @@
         window.addEventListener("resize", onScroll);
     })();
 
-    // ========= 8) Tilt + shine на фотках и карточках =========
+    // ========= 8) Tilt: strong on photos, tiny on cards =========
+// ========= 8) Tilt: strong on photos, tiny on cards (NO contact form) =========
     (() => {
         if (prefersReducedMotion) return;
 
-        const targets = $$(".card, .trust-block, .section__media");
-        if (!targets.length) return;
+        const photos = $$(".section__media");
+        const cards = $$(".card, .trust-block");
 
         const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-        targets.forEach((el) => {
-            el.classList.add("tilt");
+        const isFormArea = (el) =>
+            el.matches(".contact-form") ||
+            el.closest(".contact-form") ||
+            el.querySelector?.(".contact-form");
 
+        const bindTilt = (el, cfg) => {
+            if (isFormArea(el)) return;
+
+            el.classList.add("tilt");
             let raf = 0;
 
             const onMove = (e) => {
+                if (isFormArea(el)) return;
+
                 const r = el.getBoundingClientRect();
                 const px = (e.clientX - r.left) / r.width;
                 const py = (e.clientY - r.top) / r.height;
 
-                const rx = clamp((0.5 - py) * 9, -7, 7);
-                const ry = clamp((px - 0.5) * 11, -9, 9);
+                const rx = clamp((0.5 - py) * cfg.rxMul, -cfg.rxMax, cfg.rxMax);
+                const ry = clamp((px - 0.5) * cfg.ryMul, -cfg.ryMax, cfg.ryMax);
 
                 cancelAnimationFrame(raf);
                 raf = requestAnimationFrame(() => {
-                    el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+                    el.style.transform = `perspective(${cfg.p}px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(${cfg.ty}px)`;
                     el.style.setProperty("--tx", `${px * 100}%`);
                     el.style.setProperty("--ty", `${py * 100}%`);
                 });
@@ -245,6 +258,147 @@
 
             el.addEventListener("pointermove", onMove);
             el.addEventListener("pointerleave", onLeave);
+        };
+
+        // Фото — заметнее
+        photos.forEach((el) =>
+            bindTilt(el, { p: 1200, rxMul: 8, ryMul: 10, rxMax: 6, ryMax: 7, ty: -2 })
+        );
+
+        // Карточки — очень слабо
+        cards.forEach((el) =>
+            bindTilt(el, { p: 900, rxMul: 2.6, ryMul: 2.8, rxMax: 1.8, ryMax: 2.0, ty: -1 })
+        );
+    })();
+
+    // ========= 9) Mobile/Portrait only: scroll progress + tap ripple =========
+    (() => {
+        const portrait =
+            window.matchMedia &&
+            window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+
+        if (!portrait) return;
+
+        // 1) тонкий прогресс-бар прокрутки
+        const bar = document.createElement("div");
+        bar.className = "m-scrollbar";
+        document.body.appendChild(bar);
+
+        const onScroll = () => {
+            const doc = document.documentElement;
+            const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
+            const p = (window.scrollY / max) * 100;
+            document.documentElement.style.setProperty("--m-progress", `${p}%`);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        // 2) ripple на тап (кнопки + кнопки в хэдере)
+        const addRipple = (el, e) => {
+            const r = el.getBoundingClientRect();
+            const size = Math.max(r.width, r.height) * 1.2;
+
+            const ripple = document.createElement("span");
+            ripple.className = "tap-ripple";
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - r.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - r.top - size / 2}px`;
+
+            el.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 560);
+        };
+
+        const targets = document.querySelectorAll(".btn, .site-nav__link, .site-nav__toggle");
+        targets.forEach((el) => {
+            el.addEventListener("pointerdown", (e) => addRipple(el, e));
         });
+    })();
+
+    // ========= Mobile-only scroll effects (portrait) =========
+    (() => {
+        const prefersReducedMotion =
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const isMobilePortrait =
+            window.matchMedia &&
+            window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+
+        if (prefersReducedMotion || !isMobilePortrait) return;
+
+        const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+        // 1) progress bar
+        const bar = document.createElement("div");
+        bar.className = "m-scrollbar";
+        document.body.appendChild(bar);
+
+        const setProgress = () => {
+            const doc = document.documentElement;
+            const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
+            const p = (window.scrollY / max) * 100;
+            doc.style.setProperty("--m-progress", `${p}%`);
+        };
+
+        // 2) mobile reveal (ненавязчиво)
+        const revealEls = [
+            ...$$(".section__inner"),
+            ...$$(".card"),
+            ...$$(".trust-block"),
+            ...$$(".contact-form"),
+        ];
+
+        revealEls.forEach((el) => el.classList.add("m-reveal"));
+
+        const ro = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (!e.isIntersecting) return;
+                    e.target.classList.add("is-visible");
+                    ro.unobserve(e.target);
+                });
+            },
+            { threshold: 0.18 }
+        );
+        revealEls.forEach((el) => ro.observe(el));
+
+        // 3) micro parallax (hero + photos) based on scroll position
+        const heroInner = document.querySelector(".hero__inner");
+        const medias = $$(".section__media");
+
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+        const microParallax = () => {
+            // hero чуть “дышит” вверх/вниз
+            if (heroInner) {
+                const h = heroInner.getBoundingClientRect();
+                const t = clamp((window.innerHeight - h.top) / (window.innerHeight + h.height), 0, 1);
+                // от +6px до -6px
+                const y = (0.5 - t) * 12;
+                document.documentElement.style.setProperty("--m-hero", `${y.toFixed(2)}px`);
+            }
+
+            // фотки: очень лёгкий подъём + едва заметный поворот
+            medias.forEach((el) => {
+                const r = el.getBoundingClientRect();
+                const t = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
+                const y = (0.5 - t) * 10;      // до ~10px
+                const rot = (t - 0.5) * 1.2;   // до ~0.6deg
+                el.style.setProperty("--m-media", `${y.toFixed(2)}px`);
+                el.style.setProperty("--m-rot", `${rot.toFixed(3)}deg`);
+            });
+        };
+
+        // один общий scroll handler
+        const onScroll = () => {
+            setProgress();
+            microParallax();
+        };
+
+        setProgress();
+        microParallax();
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
     })();
 })();
