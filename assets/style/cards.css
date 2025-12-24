@@ -72,3 +72,78 @@
     border-color: rgba(148, 163, 184, 0.55);
     background-color: #ffffff;
 }
+
+/* =========================
+   Moved from main.css (cleanup)
+   ========================= */
+
+.card.tilt,
+.trust-block.tilt {
+    transition: transform 0.14s ease;
+    will-change: transform;
+}
+
+.card.tilt::after,
+.trust-block.tilt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.14s ease;
+    background: radial-gradient(
+            circle at var(--tx, 50%) var(--ty, 50%),
+            rgba(255, 255, 255, 0.14),
+            transparent 48%
+    );
+}
+
+.card.tilt:hover::after,
+.trust-block.tilt:hover::after {
+    opacity: 1;
+}
+
+.card:has(.contact-form),
+.trust-block:has(.contact-form) {
+    transform: none !important;
+}
+
+.card:has(.contact-form),
+.trust-block:has(.contact-form),
+.section__media:has(.contact-form) {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+.card:has(.contact-form)::before,
+.card:has(.contact-form)::after,
+.trust-block:has(.contact-form)::before,
+.trust-block:has(.contact-form)::after {
+    content: none !important;
+}
+
+.card:has(.contact-form),
+.trust-block:has(.contact-form),
+.section__inner:has(.contact-form),
+.section:has(.contact-form) .section__inner {
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.card:has(.contact-form)::before,
+.card:has(.contact-form)::after,
+.trust-block:has(.contact-form)::before,
+.trust-block:has(.contact-form)::after,
+.section__inner:has(.contact-form)::before,
+.section__inner:has(.contact-form)::after {
+    content: none !important;
+}
+
+.card:has(.contact-form),
+.trust-block:has(.contact-form),
+.section__inner:has(.contact-form) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}

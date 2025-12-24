@@ -1,43 +1,3 @@
-﻿:root {
-    /* Цвета хэдера */
-    --header-bg: #ffffff;
-    --header-border-color: rgba(0, 0, 0, 0.06);
-    --header-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    --header-shadow-mobile: 0 4px 18px rgba(0, 0, 0, 0.06);
-
-    --header-max-width: 1200px;
-    --header-padding-y: 0.6rem;
-    --header-padding-x: 1.25rem;
-
-    --logo-size: 75px;
-    --logo-title-size: 1.1rem;
-    --logo-subtitle-size: 0.78rem;
-    --logo-title-color: #2482a5;
-    --logo-subtitle-color: #53606f;
-
-    /* Навигация */
-    --nav-gap: 1.5rem;
-    --nav-link-gap: 1rem;
-    --nav-link-font-size: 0.9rem;
-    --nav-link-color: #1f2a36;
-    --nav-link-hover-color: #2c78b5;
-    --nav-underline-start: #286095;
-    --nav-underline-end: #2b875a;
-
-
-    /* Футер */
-    --footer-bg: #f5f7f9;
-    --footer-border-color: rgba(0, 0, 0, 0.04);
-    --footer-text-color: #4a5563;
-    --footer-muted-color: #6b7280;
-    --footer-link-color: #1f2933;
-    --footer-link-hover-color: #2c78b5;
-    --footer-font-size: 0.85rem;
-    --footer-padding-y: 1.25rem;
-    --footer-padding-x: 1.25rem;
-}
-
-
 /* Header */
 
 .site-header {
@@ -331,4 +291,20 @@
     .site-footer__title {
         font-size: 0.95rem;
     }
+}
+
+/* =========================
+   Moved from main.css (cleanup)
+   ========================= */
+
+.site-nav__link.is-active {
+    color: var(--nav-link-hover-color);
+}
+
+.site-nav__link.is-active::after {
+    transform: scaleX(1);
+}
+
+.site-header.site-header--scrolled {
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
 }
