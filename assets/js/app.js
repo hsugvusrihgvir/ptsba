@@ -1,211 +1,197 @@
-﻿/* assets/js/app.js */
+﻿/* =========================================================
+   app.js — main interactions (no frameworks)
+   - nav active link
+   - header on scroll
+   - reveal on scroll
+   - toast helper
+   - to top button
+   - mobile: progress bar + reveal + micro parallax
+   - mobile: "hover-like" photo effect on first scroll down only
+   ========================================================= */
 
 (() => {
-    const prefersReducedMotion =
-        window.matchMedia &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    "use strict";
 
+    // -------------------------
+    // Helpers
+    // -------------------------
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-    // ========= 0) Loader =========
-    (() => {
-        const loader = document.createElement("div");
-        loader.className = "page-loader";
-        loader.innerHTML = `
-      <div class="page-loader__card">
-        <div class="page-loader__ring" aria-hidden="true"></div>
-        <div class="page-loader__title">Загрузка…</div>
-        <div class="page-loader__sub">Поволжский центр беспилотной авиации</div>
-      </div>
-    `;
+    // -------------------------
+    // Header: sticky shadow on scroll
+    // -------------------------
+    const header = $(".site-header");
+    const onHeaderScroll = () => {
+        if (!header) return;
+        header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    window.addEventListener("scroll", onHeaderScroll, { passive: true });
+    onHeaderScroll();
 
-        document.documentElement.classList.add("is-loading");
-        document.body.appendChild(loader);
+    // -------------------------
+    // Mobile nav toggle
+    // -------------------------
+    const navToggle = $(".site-nav__toggle");
+    const navList = $(".site-nav__list");
 
-        window.addEventListener("load", () => {
-            document.documentElement.classList.remove("is-loading");
-            document.documentElement.classList.add("is-loaded");
-            loader.classList.add("is-hide");
-            setTimeout(() => loader.remove(), 550);
-        });
-    })();
-
-    // ========= 1) Year =========
-    (() => {
-        const el = $("#js-year");
-        if (el) el.textContent = String(new Date().getFullYear());
-    })();
-
-    // ========= 2) Burger =========
-    (() => {
-        const toggle = $(".site-nav__toggle");
-        const list = $(".site-nav__list");
-        if (!toggle || !list) return;
-
-        const closeMenu = () => {
-            toggle.setAttribute("aria-expanded", "false");
-            list.classList.remove("site-nav__list--open");
-        };
-
-        toggle.addEventListener("click", () => {
-            const expanded = toggle.getAttribute("aria-expanded") === "true";
-            toggle.setAttribute("aria-expanded", String(!expanded));
-            list.classList.toggle("site-nav__list--open");
+    if (navToggle && navList) {
+        navToggle.addEventListener("click", () => {
+            const expanded = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", String(!expanded));
+            navList.classList.toggle("is-open", !expanded);
         });
 
-        list.addEventListener("click", (e) => {
-            const link = e.target.closest("a");
-            if (!link) return;
-            closeMenu();
-        });
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeMenu();
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!list.classList.contains("site-nav__list--open")) return;
-            const inside = e.target.closest(".site-nav");
-            if (!inside) closeMenu();
-        });
-    })();
-
-    // ========= 3) Smooth anchors =========
-    (() => {
-        const links = $$('a[href^="#"]');
-        links.forEach((a) => {
-            a.addEventListener("click", (e) => {
-                const href = a.getAttribute("href");
-                if (!href || href === "#") return;
-
-                const target = document.getElementById(href.slice(1));
-                if (!target) return;
-
-                e.preventDefault();
-
-                const header = $(".site-header");
-                const headerH = header ? header.getBoundingClientRect().height : 0;
-                const top =
-                    window.scrollY + target.getBoundingClientRect().top - headerH - 12;
-
-                if (prefersReducedMotion) window.scrollTo(0, Math.max(0, top));
-                else window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-
-                history.pushState(null, "", href);
+        // close on link click (mobile)
+        $$(".site-nav__link", navList).forEach((a) => {
+            a.addEventListener("click", () => {
+                navToggle.setAttribute("aria-expanded", "false");
+                navList.classList.remove("is-open");
             });
         });
-    })();
+    }
 
-    // ========= 4) Header shadow =========
-    (() => {
-        const header = $(".site-header");
-        if (!header) return;
+    // -------------------------
+    // Active nav link on scroll
+    // -------------------------
+    const sections = $$("section[id]");
+    const navLinks = $$(".site-nav__link");
 
-        const onScroll = () => {
-            header.classList.toggle("site-header--scrolled", window.scrollY > 8);
+    if (sections.length && navLinks.length) {
+        const setActive = () => {
+            const y = window.scrollY + 120;
+            let currentId = "";
+
+            for (const s of sections) {
+                const top = s.offsetTop;
+                const height = s.offsetHeight;
+                if (y >= top && y < top + height) {
+                    currentId = s.id;
+                    break;
+                }
+            }
+
+            navLinks.forEach((a) => {
+                const href = a.getAttribute("href") || "";
+                const isActive = href === `#${currentId}`;
+                a.classList.toggle("is-active", isActive);
+            });
         };
 
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-    })();
+        window.addEventListener("scroll", setActive, { passive: true });
+        window.addEventListener("resize", setActive);
+        setActive();
+    }
 
-    // ========= 5) Active nav =========
-    (() => {
-        const navLinks = $$(".site-nav__link").filter((a) =>
-            a.getAttribute("href")?.startsWith("#")
-        );
-        if (!navLinks.length) return;
+    // -------------------------
+    // Reveal on scroll
+    // -------------------------
+    const revealItems = $$(".js-reveal");
 
-        const map = new Map();
-        navLinks.forEach((a) => map.set(a.getAttribute("href").slice(1), a));
-
-        const sections = Array.from(map.keys())
-            .map((id) => document.getElementById(id))
-            .filter(Boolean);
-
-        if (!sections.length) return;
-
-        const setActive = (id) => {
-            navLinks.forEach((a) => a.classList.remove("is-active"));
-            map.get(id)?.classList.add("is-active");
-        };
-
-        const obs = new IntersectionObserver(
-            (entries) => {
-                const visible = entries
-                    .filter((x) => x.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-                if (visible?.target?.id) setActive(visible.target.id);
-            },
-            { threshold: [0.25, 0.4, 0.6], rootMargin: "-10% 0px -60% 0px" }
-        );
-
-        sections.forEach((s) => obs.observe(s));
-
-        const hash = (location.hash || "").slice(1);
-        if (hash && map.has(hash)) setActive(hash);
-    })();
-
-    // ========= 6) Reveal =========
-    (() => {
-        if (prefersReducedMotion) return;
-
-        const items = [
-            ...$$(".section__content"),
-            ...$$(".section__media"),
-            ...$$(".card"),
-            ...$$(".trust-block"),
-            ...$$(".contact-form"),
-        ];
-        if (!items.length) return;
-
-        items.forEach((el) => el.classList.add("js-reveal"));
-
-        const obs = new IntersectionObserver(
+    if (revealItems.length) {
+        const io = new IntersectionObserver(
             (entries) => {
                 entries.forEach((e) => {
-                    if (!e.isIntersecting) return;
-                    e.target.classList.add("is-visible");
-                    obs.unobserve(e.target);
+                    if (e.isIntersecting) e.target.classList.add("is-visible");
                 });
             },
-            { threshold: 0.15 }
+            { threshold: 0.12 }
         );
 
-        items.forEach((el) => obs.observe(el));
-    })();
+        revealItems.forEach((el) => io.observe(el));
+    }
 
-    // ========= 7) Parallax vars for hero + services + all photos =========
+    // -------------------------
+    // Toast helper (click to close)
+    // -------------------------
+    const toast = $(".js-toast");
+    if (toast) {
+        toast.addEventListener("click", () => toast.classList.remove("is-show"));
+    }
+
+    // -------------------------
+    // To top button
+    // -------------------------
+    const toTop = $(".js-to-top");
+    if (toTop) {
+        const onToTop = () => {
+            toTop.classList.toggle("is-show", window.scrollY > 450);
+        };
+        window.addEventListener("scroll", onToTop, { passive: true });
+        onToTop();
+
+        toTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // -------------------------
+    // Footer year
+    // -------------------------
+    const yearEl = $("#js-year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    // =========================
+    // MOBILE / PORTRAIT effects
+    // =========================
     (() => {
-        if (prefersReducedMotion) return;
+        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        const isPortrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+        if (!isTouch || !isPortrait) return;
 
-        const hero = $(".hero");
-
-        // если есть — прям идеально:
-        // <section ... data-parallax="services">
-        const services =
-            $('.section[data-parallax="services"]') || $(".section.section--light");
-
-        const medias = $$(".section__media");
-
-        const clamp01 = (v) => Math.max(0, Math.min(1, v));
-
-        const computeT = (el) => {
-            const r = el.getBoundingClientRect();
-            const vh = window.innerHeight;
-            return clamp01((vh - r.top) / (vh + r.height));
+        // 1) scroll progress bar (CSS reads --m-progress)
+        const setProgress = () => {
+            const doc = document.documentElement;
+            const scrollTop = window.scrollY || doc.scrollTop || 0;
+            const max = (doc.scrollHeight || 1) - (window.innerHeight || 1);
+            const p = max > 0 ? (scrollTop / max) * 100 : 0;
+            doc.style.setProperty("--m-progress", `${p.toFixed(2)}%`);
         };
 
-        const applyVar = (el) => {
-            if (!el) return;
-            el.style.setProperty("--par", String(computeT(el)));
+        // 2) mobile reveal (use .m-reveal)
+        const mobReveal = $$(".m-reveal");
+        let mobIO = null;
+
+        if (mobReveal.length) {
+            mobIO = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) e.target.classList.add("is-visible");
+                    });
+                },
+                { threshold: 0.14 }
+            );
+            mobReveal.forEach((el) => mobIO.observe(el));
+        }
+
+        // 3) micro parallax vars for hero + media (CSS reads --m-hero, --m-media, --m-rot)
+        const heroInner = $(".hero__inner");
+        const medias = $$(".section__media");
+
+        const setParallax = () => {
+            const y = window.scrollY || 0;
+
+            if (heroInner) {
+                // gentle
+                const v = Math.max(-12, Math.min(18, y * 0.03));
+                document.documentElement.style.setProperty("--m-hero", `${v.toFixed(2)}px`);
+            }
+
+            // apply to each media block
+            medias.forEach((m, idx) => {
+                const r = m.getBoundingClientRect();
+                const vh = window.innerHeight || 1;
+                const t = (r.top + r.height * 0.5) / vh; // 0..1..2
+                const offset = (0.5 - t) * 10; // px
+                const rot = (0.5 - t) * (idx % 2 ? -1 : 1) * 2; // deg
+                m.style.setProperty("--m-media", `${offset.toFixed(2)}px`);
+                m.style.setProperty("--m-rot", `${rot.toFixed(2)}deg`);
+            });
         };
 
         const onScroll = () => {
-            applyVar(hero);
-            applyVar(services);
-            medias.forEach(applyVar);
+            setProgress();
+            setParallax();
         };
 
         onScroll();
@@ -213,191 +199,140 @@
         window.addEventListener("resize", onScroll);
     })();
 
-    // ========= 8) Tilt: strong on photos, tiny on cards =========
-// ========= 8) Tilt: strong on photos, tiny on cards (NO contact form) =========
+    // =========================
+    // Touch ripple (mobile only)
+    // =========================
     (() => {
-        if (prefersReducedMotion) return;
+        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        if (!isTouch) return;
 
-        const photos = $$(".section__media");
-        const cards = $$(".card, .trust-block");
+        const targets = $$(".btn, .site-nav__link, .site-nav__toggle");
+        if (!targets.length) return;
 
-        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-
-        const isFormArea = (el) =>
-            el.matches(".contact-form") ||
-            el.closest(".contact-form") ||
-            el.querySelector?.(".contact-form");
-
-        const bindTilt = (el, cfg) => {
-            if (isFormArea(el)) return;
-
-            el.classList.add("tilt");
-            let raf = 0;
-
-            const onMove = (e) => {
-                if (isFormArea(el)) return;
-
-                const r = el.getBoundingClientRect();
-                const px = (e.clientX - r.left) / r.width;
-                const py = (e.clientY - r.top) / r.height;
-
-                const rx = clamp((0.5 - py) * cfg.rxMul, -cfg.rxMax, cfg.rxMax);
-                const ry = clamp((px - 0.5) * cfg.ryMul, -cfg.ryMax, cfg.ryMax);
-
-                cancelAnimationFrame(raf);
-                raf = requestAnimationFrame(() => {
-                    el.style.transform = `perspective(${cfg.p}px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(${cfg.ty}px)`;
-                    el.style.setProperty("--tx", `${px * 100}%`);
-                    el.style.setProperty("--ty", `${py * 100}%`);
-                });
-            };
-
-            const onLeave = () => {
-                el.style.transform = "";
-            };
-
-            el.addEventListener("pointermove", onMove);
-            el.addEventListener("pointerleave", onLeave);
-        };
-
-        // Фото — заметнее
-        photos.forEach((el) =>
-            bindTilt(el, { p: 1200, rxMul: 8, ryMul: 10, rxMax: 6, ryMax: 7, ty: -2 })
-        );
-
-        // Карточки — очень слабо
-        cards.forEach((el) =>
-            bindTilt(el, { p: 900, rxMul: 2.6, ryMul: 2.8, rxMax: 1.8, ryMax: 2.0, ty: -1 })
-        );
-    })();
-
-    // ========= 9) Mobile/Portrait only: scroll progress + tap ripple =========
-    (() => {
-        const portrait =
-            window.matchMedia &&
-            window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
-
-        if (!portrait) return;
-
-        // 1) тонкий прогресс-бар прокрутки
-        const bar = document.createElement("div");
-        bar.className = "m-scrollbar";
-        document.body.appendChild(bar);
-
-        const onScroll = () => {
-            const doc = document.documentElement;
-            const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
-            const p = (window.scrollY / max) * 100;
-            document.documentElement.style.setProperty("--m-progress", `${p}%`);
-        };
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-
-        // 2) ripple на тап (кнопки + кнопки в хэдере)
-        const addRipple = (el, e) => {
+        const addRipple = (e) => {
+            const el = e.currentTarget;
             const r = el.getBoundingClientRect();
-            const size = Math.max(r.width, r.height) * 1.2;
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+            const y = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
 
-            const ripple = document.createElement("span");
-            ripple.className = "tap-ripple";
-            ripple.style.width = ripple.style.height = `${size}px`;
-            ripple.style.left = `${e.clientX - r.left - size / 2}px`;
-            ripple.style.top = `${e.clientY - r.top - size / 2}px`;
+            const span = document.createElement("span");
+            span.className = "tap-ripple";
+            span.style.left = `${x}px`;
+            span.style.top = `${y}px`;
+            el.appendChild(span);
 
-            el.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 560);
+            span.addEventListener("animationend", () => span.remove());
         };
 
-        const targets = document.querySelectorAll(".btn, .site-nav__link, .site-nav__toggle");
-        targets.forEach((el) => {
-            el.addEventListener("pointerdown", (e) => addRipple(el, e));
-        });
+        targets.forEach((t) => t.addEventListener("touchstart", addRipple, { passive: true }));
     })();
 
-    // ========= Mobile-only scroll effects (portrait) =========
+    // =========================
+    // Mobile photo "hover-like" on scroll (first visit)
+    // =========================
     (() => {
-        const prefersReducedMotion =
-            window.matchMedia &&
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // только мобилка/тач + портрет
+        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        const isPortrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+        if (!isTouch || !isPortrait) return;
 
-        const isMobilePortrait =
-            window.matchMedia &&
-            window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+        const items = Array.from(document.querySelectorAll(".section__image-placeholder"));
+        if (!items.length) return;
 
-        if (prefersReducedMotion || !isMobilePortrait) return;
+        // эффекты активны ТОЛЬКО на первом «проходе вниз» после загрузки страницы.
+        // логика: пока пользователь скроллит вниз — показываем лёгкий hover-like.
+        // как только он впервые начал скроллить ВВЕРХ (после того как уже пролистал вниз),
+        // эффекты выключаются до перезагрузки.
+        document.body.classList.add("is-first-visit");
 
-        const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+        const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-        // 1) progress bar
-        const bar = document.createElement("div");
-        bar.className = "m-scrollbar";
-        document.body.appendChild(bar);
+        const computePeek = (el) => {
+            const r = el.getBoundingClientRect();
+            const vh = window.innerHeight || 1;
 
-        const setProgress = () => {
-            const doc = document.documentElement;
-            const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
-            const p = (window.scrollY / max) * 100;
-            doc.style.setProperty("--m-progress", `${p}%`);
+            const elCenter = r.top + r.height / 2;
+            const viewCenter = vh / 2;
+
+            const dist = Math.abs(elCenter - viewCenter);
+            const norm = 1 - dist / (vh * 0.55); // зона действия
+            return clamp01(norm);
         };
 
-        // 2) mobile reveal (ненавязчиво)
-        const revealEls = [
-            ...$$(".section__inner"),
-            ...$$(".card"),
-            ...$$(".trust-block"),
-            ...$$(".contact-form"),
-        ];
+        let raf = 0;
+        let disabled = false;
 
-        revealEls.forEach((el) => el.classList.add("m-reveal"));
+        // следим за направлением скролла
+        let maxY = window.scrollY || 0;
+        let armed = false; // «вооружаемся» после первого заметного скролла вниз
 
-        const ro = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((e) => {
-                    if (!e.isIntersecting) return;
-                    e.target.classList.add("is-visible");
-                    ro.unobserve(e.target);
-                });
-            },
-            { threshold: 0.18 }
-        );
-        revealEls.forEach((el) => ro.observe(el));
+        const disable = () => {
+            if (disabled) return;
+            disabled = true;
 
-        // 3) micro parallax (hero + photos) based on scroll position
-        const heroInner = document.querySelector(".hero__inner");
-        const medias = $$(".section__media");
-
-        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-
-        const microParallax = () => {
-            // hero чуть “дышит” вверх/вниз
-            if (heroInner) {
-                const h = heroInner.getBoundingClientRect();
-                const t = clamp((window.innerHeight - h.top) / (window.innerHeight + h.height), 0, 1);
-                // от +6px до -6px
-                const y = (0.5 - t) * 12;
-                document.documentElement.style.setProperty("--m-hero", `${y.toFixed(2)}px`);
+            document.body.classList.remove("is-first-visit");
+            for (const el of items) {
+                el.style.setProperty("--m-peek", "0");
+                el.style.setProperty("--par", "0.5");
             }
 
-            // фотки: очень лёгкий подъём + едва заметный поворот
-            medias.forEach((el) => {
-                const r = el.getBoundingClientRect();
-                const t = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
-                const y = (0.5 - t) * 10;      // до ~10px
-                const rot = (t - 0.5) * 1.2;   // до ~0.6deg
-                el.style.setProperty("--m-media", `${y.toFixed(2)}px`);
-                el.style.setProperty("--m-rot", `${rot.toFixed(3)}deg`);
-            });
+
+            window.removeEventListener("scroll", onScroll, { passive: true });
+            window.removeEventListener("resize", onScroll);
         };
 
-        // один общий scroll handler
+        const apply = () => {
+            raf = 0;
+            if (disabled) return;
+
+            const vh = window.innerHeight || 1;
+
+            for (const el of items) {
+                const peek = computePeek(el);
+                el.style.setProperty("--m-peek", peek.toFixed(3));
+
+                // 1) Пока элемент "не зафиксирован" — даём ему лёгкий наклон/сдвиг от позиции
+                if (!el.dataset.parLocked) {
+                    const r = el.getBoundingClientRect();
+                    const t = (r.top + r.height / 2) / vh;     // 0..1..2
+                    const par = clamp01(t);                   // 0..1
+                    el.style.setProperty("--par", par.toFixed(3));
+
+                    // 2) Как только он достаточно "в зоне внимания" — фиксируем ровно (параллельно)
+                    if (peek > 0.62) {
+                        el.dataset.parLocked = "1";
+                        el.style.setProperty("--par", "0.5");
+                    }
+                } else {
+                    // уже зафиксирован — держим ровно
+                    el.style.setProperty("--par", "0.5");
+                }
+            }
+        };
+
         const onScroll = () => {
-            setProgress();
-            microParallax();
+            if (disabled) return;
+
+            const y = window.scrollY || 0;
+
+            // вниз
+            if (y >= maxY) {
+                maxY = y;
+                if (maxY > 120) armed = true; // порог, чтобы не срабатывало на микро-скролл
+            } else {
+                // вверх: если уже был проход вниз — выключаем эффекты
+                if (armed && (maxY - y) > 10) {
+                    disable();
+                    return;
+                }
+            }
+
+            if (raf) return;
+            raf = requestAnimationFrame(apply);
         };
 
-        setProgress();
-        microParallax();
-
+        // старт
+        apply();
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);
     })();
