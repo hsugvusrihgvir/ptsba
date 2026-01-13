@@ -2,13 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Услуги агродронов</title>
+    <title>Услуги агродронов — внесение СЗР и аэросев</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description"
-          content="Обработка полей агродронами, обучение пилотов с выдачей свидетельства внешнего пилота, ремонт и сервис агродронов в Поволжье.">
-
+          content="Оказание услуг по внесению средств защиты растений и аэросев с использованием агродронов. Обработка полей агродронами: поля, сады, виноградники.">
 
     <link rel="stylesheet" href="../assets/style/main.css">
+    <link rel="stylesheet" href="../assets/style/services.css">
+
+    <!-- (если у тебя эти файлы уже подключаются в других страницах — оставь как есть) -->
     <link rel="stylesheet" href="../assets/style/pages.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/header-footer.css">
@@ -20,18 +22,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+
+<body class="page">
 <a id="top"></a>
+
+<!-- ХЭДЕР — НЕ ТРОГАТЬ -->
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="../index.html">
             <img
                     class="site-header__logo-img"
                     src="../assets/img/logo/logo300.png"
-                    srcset="
-            ../assets/img/logo/logo300.png 1x,
-            ../assets/img/logo/logo500.png 2x
-             "
+                    srcset="../assets/img/logo/logo300.png 1x, ../assets/img/logo/logo500.png 2x"
                     alt="Поволжский центр беспилотной авиации"
                     width="70"
                     height="70"
@@ -43,96 +45,302 @@
         </a>
 
         <nav class="site-nav" aria-label="Основная навигация">
-            <button class="site-nav__toggle" type="button" aria-expanded="false" aria-label="Открыть меню">
-                ☰
-            </button>
+            <button class="site-nav__toggle" type="button" aria-expanded="false" aria-label="Открыть меню">☰</button>
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
                 <li class="site-nav__item"><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
                 <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
-                <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
+                <li class="site-nav__item"><a href="services.html" class="site-nav__link is-active">Услуги агродронов</a></li>
                 <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
-                <li class="site-nav__item"><a href="project-souls.html" class="site-nav__link">Соцпроект</a></li>
-                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Открытая информация</a></li>
-                <li class="site-nav__item"><a href="policy.html" class="site-nav__link">Политика</a></li>
+                <li class="site-nav__item"><a href="news.html" class="site-nav__link">Новости</a></li>
+                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Информация</a></li>
             </ul>
         </nav>
     </div>
 </header>
-<main class="page-main">
-    <div class="container">
-        <nav class="breadcrumbs" aria-label="Хлебные крошки">
-            <a href="../index.html">Главная</a>
-            <span aria-hidden="true">/</span>
-            <span>Услуги агродронов</span>
-        </nav>
-        <h1 class="page-title">Услуги агродронов</h1>
-        <p class="page-lead">Обработка полей и работы агродронами: быстро, точно и безопасно для культур.</p>
-    </div>
-<section class="section" id="services">
-<div class="section__inner container section__inner--split">
-<div class="section__content">
-<h2 class="section__title">Оказание услуг по внесению средств защиты растений и аэросев</h2>
-<p class="section__subtitle">
-                    Выполняем внесение средств защиты растений и аэросев с использованием агродронов.
-                    Подберём формат работ под задачу и сроки хозяйства.
+
+<main class="page-main services">
+
+    <!-- HERO -->
+    <section class="section section--light services-hero" aria-labelledby="services-hero-title">
+        <div class="section__inner section__inner--split">
+            <div class="services-hero__content">
+                <div class="section__header">
+                    <h1 class="section__title" id="services-hero-title">Внесение СЗР и аэросев агродронами</h1>
+                    <p class="section__subtitle">
+                        Оказание услуг по внесению средств защиты растений и аэросев с использованием агродронов —
+                        это новаторский подход, который приносит множество преимуществ для фермеров и сельскохозяйственных предприятий.
+                    </p>
+                </div>
+
+                <ul class="services-chips" aria-label="Ключевые преимущества">
+                    <li>точность внесения</li>
+                    <li>оперативный выезд</li>
+                    <li>экономия ресурсов</li>
+                    <li>работа по полям / садам / виноградникам</li>
+                </ul>
+
+                <div class="section__actions">
+                    <a href="#price" class="btn btn--primary">Узнать стоимость</a>
+                    <a href="#cases" class="btn btn--outline">Где применяем</a>
+                    <a href="../index.html#contacts" class="btn btn--ghost">Связаться</a>
+                </div>
+
+                <div class="services-contacts">
+                    <div class="services-contacts__item">
+                        <span class="services-contacts__label">Телефон</span>
+                        <a class="services-contacts__phone" href="tel:+79179845875">+7 (917) 984-58-75</a>
+                    </div>
+                    <div class="services-contacts__item">
+                        <span class="services-contacts__label">Телефон</span>
+                        <a class="services-contacts__phone" href="tel:+79376336529">+7 (937) 633-65-29</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-media">
+                <div class="media-frame tilt">
+                    <picture>
+                        <source srcset="../assets/img/photo/services/s1.JPG" type="image/jpeg">
+                        <img src="../assets/img/photo/services/s1.JPG" alt="Обработка полей агродроном" loading="lazy">
+                    </picture>
+                </div>
+
+                <div class="services-media__mini">
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/services/s2.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/services/s2.JPG" alt="Работа агродрона на поле" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/services/s3.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/services/s3.JPG" alt="Подготовка к вылету" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОЧЕМУ АГРОДРОНЫ -->
+    <section class="section services-why" aria-labelledby="why-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="why-title">Почему агродроны</h2>
+                <p class="section__subtitle">
+                    В мире сельского хозяйства технологии постоянно развиваются, и агродроны становятся важным инструментом
+                    для оптимизации процессов. :contentReference[oaicite:1]{index=1}
                 </p>
-<h3 class="section__label">Преимущества</h3>
-<ul class="section__list">
-<li>Равномерное внесение и контроль качества выполнения работ</li>
-<li>Оперативный выезд и выполнение работ в оптимальные сроки</li>
-</ul>
-<div class="section__actions">
-<a class="btn btn--primary" href="#contacts">Оставить заявку</a>
-<a class="btn btn--ghost" href="/services.html">Подробнее...</a>
-</div>
-</div>
-<div class="section__media">
-<div class="section__image-placeholder">
-<picture class="section__image">
-<source sizes="(max-width: 960px) 100vw, 42vw" srcset="../assets/img/photo/im3.jpg 700w,
-                                ../assets/img/photo/im3-700.jpg 1400w"/>
-<img alt="Фото обучения" height="430" loading="lazy" src="../assets/img/photo/im3-700.jpg" width="700"/>
-</picture>
-</div>
-</div>
-</div>
-</section>
+            </div>
+
+            <div class="services-grid-3">
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Эффективность и точность</h3>
+                    <p class="card__text">
+                        Агродроны обеспечивают более точное распыление средств защиты растений и аэросемян по сравнению с традиционными методами.
+                        Это помогает снизить расход препаратов и повысить результат. :contentReference[oaicite:2]{index=2}
+                    </p>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Быстрота и гибкость</h3>
+                    <p class="card__text">
+                        Можно оперативно приступить к работе и адаптироваться к условиям.
+                        Обработка проводится в нужное время, без жёсткой привязки к технике на земле. :contentReference[oaicite:3]{index=3}
+                    </p>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Рост производительности</h3>
+                    <p class="card__text">
+                        Экономия времени и ресурсов помогает повышать производительность и прибыльность
+                        сельскохозяйственного производства. :contentReference[oaicite:4]{index=4}
+                    </p>
+                </article>
+            </div>
+
+            <div class="services-cta-bar" id="price">
+                <div class="services-cta-bar__text">
+                    <p class="services-cta-bar__title">Узнать стоимость обработки</p>
+                    <p class="services-cta-bar__sub">Позвоните или оставьте заявку — ответим быстро.</p>
+                </div>
+                <div class="services-cta-bar__actions">
+                    <a class="btn btn--primary" href="tel:+79179845875">Позвонить</a>
+                    <a class="btn btn--outline" href="#request">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБРАБОТКА ПОЛЕЙ АГРОДРОНАМИ -->
+    <section class="section section--light services-fields" aria-labelledby="fields-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="fields-title">Обработка полей агродронами</h2>
+                <p class="section__subtitle">
+                    Равномерное распределение средств защиты растений обеспечивает максимальную защиту культур от вредителей и болезней.
+                    Беспилотные агродроны помогают быстро и эффективно выполнять обработку, сокращая затраты на топливо и ресурсы. :contentReference[oaicite:5]{index=5}
+                </p>
+            </div>
+
+            <div class="services-grid-2">
+                <div class="card tilt">
+                    <h3 class="card__title">Высокая эффективность</h3>
+                    <p class="card__text">
+                        Равномерное распределение СЗР обеспечивает максимальную защиту культур от вредителей и болезней. :contentReference[oaicite:6]{index=6}
+                    </p>
+                </div>
+                <div class="card tilt">
+                    <h3 class="card__title">Экономия времени и ресурсов</h3>
+                    <p class="card__text">
+                        Быстрая обработка, меньше затрат на топливо и ресурсы благодаря БПЛА. :contentReference[oaicite:7]{index=7}
+                    </p>
+                </div>
+            </div>
+
+            <!-- ГДЕ ПРИМЕНЯЕМ -->
+            <div class="section__header" id="cases" style="margin-top: 2.2rem;">
+                <h3 class="section__title section__title--small">Использование агродронов</h3>
+                <p class="section__subtitle">Поля, сады, виноградники. :contentReference[oaicite:8]{index=8}</p>
+            </div>
+
+            <div class="services-grid-3">
+                <article class="card card--service tilt">
+                    <h4 class="card__title">Поля</h4>
+                    <p class="card__text">
+                        Обработка посевов и внесение средств защиты растений по заданию, быстро и равномерно.
+                    </p>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h4 class="card__title">Сады</h4>
+                    <p class="card__text">
+                        Работы на территориях, где важны точность и аккуратность внесения.
+                    </p>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h4 class="card__title">Виноградники</h4>
+                    <p class="card__text">
+                        Удобный способ обработки на участках с особенностями рельефа и посадок.
+                    </p>
+                </article>
+            </div>
+
+            <div class="services-cta-bar" style="margin-top: 1.2rem;">
+                <div class="services-cta-bar__text">
+                    <p class="services-cta-bar__title">Остались вопросы?</p>
+                    <p class="services-cta-bar__sub">Обращайтесь — подскажем по работам и срокам.</p>
+                </div>
+                <div class="services-cta-bar__actions">
+                    <a class="btn btn--primary" href="tel:+79179845875">+7 (917) 984-58-75</a>
+                    <a class="btn btn--outline" href="tel:+79376336529">+7 (937) 633-65-29</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЗАЯВКА -->
+    <section class="section services-request" id="request" aria-labelledby="request-title">
+        <div class="section__inner section__inner--split">
+            <div>
+                <div class="section__header">
+                    <h2 class="section__title" id="request-title">Оставить заявку на обработку</h2>
+                    <p class="section__subtitle">
+                        Напишите кратко, что нужно: внесение СЗР / аэросев / обработка полей.
+                        Мы свяжемся с вами и уточним детали.
+                    </p>
+                </div>
+
+                <div class="services-grid-2">
+                    <div class="card tilt">
+                        <h3 class="card__title">Позвонить</h3>
+                        <p class="card__text">Самый быстрый способ — напрямую.</p>
+                        <a class="card__link" href="tel:+79179845875">Позвонить →</a>
+                    </div>
+                    <div class="card tilt">
+                        <h3 class="card__title">Контакты на главной</h3>
+                        <p class="card__text">Если удобнее — все контакты там.</p>
+                        <a class="card__link" href="../index.html#contacts">Перейти →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- форма: стиль такой же, как на других страницах -->
+            <div class="section__media">
+                <form class="contact-form">
+                    <h3 class="contact-form__title">Заявка</h3>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Имя</span>
+                        <input type="text" name="name" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Телефон</span>
+                        <input type="tel" name="phone" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Услуга</span>
+                        <select name="service">
+                            <option value="szr">Внесение средств защиты растений (СЗР)</option>
+                            <option value="aerosev">Аэросев</option>
+                            <option value="fields">Обработка полей агродронами</option>
+                            <option value="other">Другое / уточнить</option>
+                        </select>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Комментарий</span>
+                        <textarea name="message" rows="4" placeholder="Площадь, культура, сроки, регион — что есть"></textarea>
+                    </label>
+
+                    <label class="contact-form__checkbox">
+                        <input type="checkbox" name="agree" required>
+                        <span>
+                            Я даю согласие на обработку персональных данных и принимаю
+                            <a href="policy.html">Политику конфиденциальности</a>.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="btn btn--primary contact-form__submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
 </main>
+
+<!-- ФУТЕР — НЕ ТРОГАТЬ -->
 <footer class="site-footer">
     <div class="site-footer__inner container">
         <div class="site-footer__left">
-            <p class="site-footer__title">
-                Поволжский центр беспилотной авиации
-            </p>
-            <p class="site-footer__text">
-                Обработка полей агродронами, обучение пилотов и сервис.
-            </p>
+            <p class="site-footer__title">Поволжский центр беспилотной авиации</p>
+            <p class="site-footer__text">Обработка полей агродронами, обучение пилотов и сервис.</p>
         </div>
+
         <div class="site-footer__middle">
             <ul class="site-footer__nav">
                 <li><a href="#top">Наверх</a></li>
                 <li><a href="info.html">Открытая информация</a></li>
                 <li><a href="policy.html">Политика конфиденциальности</a></li>
-                <li>
-                    <a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">
-                        Telegram-канал центра
-                    </a>
-                </li>
+                <li><a href="../index.html#contacts">Контакты</a></li>
             </ul>
         </div>
+
         <div class="site-footer__right">
-            <p class="site-footer__copy">
-                © <span id="js-year">2025</span> Поволжский центр беспилотной авиации
-            </p>
-            <p class="site-footer__disclaimer">
-                Сайт не является публичной офертой и носит информационный характер.
-            </p>
+            <p class="site-footer__copy">© <span id="js-year">2025</span> Поволжский центр беспилотной авиации</p>
+            <p class="site-footer__disclaimer">Сайт не является публичной офертой и носит информационный характер.</p>
         </div>
     </div>
 
     <script defer src="../assets/js/app.js"></script>
 </footer>
-<script src="../assets/js/app.js"></script>
+
 </body>
 </html>

@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Ремонт</title>
+    <title>Ремонт и сервис агродронов — Поволжский центр беспилотной авиации</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description"
-          content="Обработка полей агродронами, обучение пилотов с выдачей свидетельства внешнего пилота, ремонт и сервис агродронов в Поволжье.">
-
+          content="Ремонт и сервисное обслуживание агродронов любой сложности. Диагностика, восстановление полётных батарей, замена комплектующих, гарантия на работы.">
 
     <link rel="stylesheet" href="../assets/style/main.css">
+    <link rel="stylesheet" href="../assets/style/repair.css">
     <link rel="stylesheet" href="../assets/style/pages.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/header-footer.css">
@@ -20,8 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page">
 <a id="top"></a>
+
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="../index.html">
@@ -51,62 +52,473 @@
                 <li class="site-nav__item"><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
                 <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
                 <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
-                <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
-                <li class="site-nav__item"><a href="project-souls.html" class="site-nav__link">Соцпроект</a></li>
-                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Открытая информация</a></li>
-                <li class="site-nav__item"><a href="policy.html" class="site-nav__link">Политика</a></li>
+                <li class="site-nav__item"><a href="repair.html" class="site-nav__link is-active">Ремонт</a></li>
+                <li class="site-nav__item"><a href="news.html" class="site-nav__link">Новости</a></li>
+                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Информация</a></li>
             </ul>
         </nav>
     </div>
 </header>
-<main class="page-main">
-    <div class="container">
-        <nav class="breadcrumbs" aria-label="Хлебные крошки">
-            <a href="../index.html">Главная</a>
-            <span aria-hidden="true">/</span>
-            <span>Ремонт</span>
-        </nav>
-        <h1 class="page-title">Ремонт</h1>
-        <p class="page-lead">Диагностика, обслуживание и ремонт агродронов: поможем вернуть технику в строй.</p>
-    </div>
-<section class="section section--light" id="repair">
-<div class="section__inner container section__inner--split">
-<div class="section__media">
-<div class="section__image-placeholder">
-<picture class="section__image">
-<source sizes="(max-width: 960px) 100vw, 42vw" srcset="../assets/img/photo/im2.jpg 700w,
-                                ../assets/img/photo/im2-700.jpg 1400w"/>
-<img alt="Фото обучения" height="430" loading="lazy" src="../assets/img/photo/im2-700.jpg" width="700"/>
-</picture>
-</div>
-</div>
-<div class="section__content">
-<h2 class="section__title">Ремонт и сервис агродронов</h2>
-<p class="section__subtitle">
-                    Ремонт агродронов любой сложности, в том числе восстановление полётных батарей.
-                    Диагностика, быстрый ремонт и гарантия на работы.
+
+<main class="page-main repair">
+
+    <!-- HERO -->
+    <section class="section section--light repair-hero" aria-labelledby="repair-hero-title">
+        <div class="section__inner section__inner--split">
+            <div class="repair-hero__content">
+                <div class="section__header">
+                    <h1 class="section__title" id="repair-hero-title">Ремонт и сервис агродронов</h1>
+                    <p class="section__subtitle">
+                        Ремонт агродронов любой сложности: диагностика, замена комплектующих, восстановление полётных батарей,
+                        настройка и обслуживание. Работаем быстро, аккуратно и с гарантией.
+                    </p>
+                </div>
+
+                <ul class="repair-chips" aria-label="Ключевые преимущества">
+                    <li>диагностика (по возможности бесплатно)</li>
+                    <li>ремонт любой сложности</li>
+                    <li>восстановление полётных батарей</li>
+                    <li>гарантия на выполненные работы</li>
+                    <li>быстрая настройка и проверка</li>
+                </ul>
+
+                <div class="section__actions">
+                    <a href="#request" class="btn btn--primary">Оставить заявку на ремонт</a>
+                    <a href="#process" class="btn btn--outline">Как мы работаем</a>
+                    <a href="../index.html#contacts" class="btn btn--ghost">Контакты для связи</a>
+                </div>
+
+                <div class="repair-quick">
+                    <div class="repair-quick__item">
+                        <p class="repair-quick__title">Что ремонтируем</p>
+                        <p class="repair-quick__text">Агродроны всех типов, полётные батареи, силовую часть, электронику, системы внесения СЗР</p>
+                    </div>
+                    <div class="repair-quick__item">
+                        <p class="repair-quick__title">Гарантия</p>
+                        <p class="repair-quick__text">На все выполненные работы предоставляем гарантию. Проверяем работоспособность перед выдачей.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="repair-media">
+                <div class="media-frame tilt">
+                    <picture>
+                        <source srcset="../assets/img/photo/repair/r1.JPG" type="image/jpeg">
+                        <img src="../assets/img/photo/repair/r1.JPG" alt="Ремонт агродрона в сервисном центре" loading="lazy">
+                    </picture>
+                </div>
+                <div class="repair-media__mini">
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/repair/r2.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/repair/r2.JPG" alt="Диагностика оборудования" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/repair/r3.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/repair/r3.JPG" alt="Настройка агродрона после ремонта" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ РЕМОНТА -->
+    <section class="section repair-services" aria-labelledby="services-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="services-title">Услуги ремонта и сервиса</h2>
+                <p class="section__subtitle">
+                    Комплексный ремонт и обслуживание агродронов для поддержания их работоспособности и продления срока службы.
                 </p>
-<h3 class="section__label">Что мы ремонтируем</h3>
-<ul class="section__list">
-<li>Агродроны и узлы любой сложности</li>
-<li>Полётные батареи (восстановление и обслуживание)</li>
-<li>Силовую часть, электронику и системы внесения</li>
-</ul>
-<h3 class="section__label">Как мы работаем</h3>
-<ol class="section__list section__list--ordered">
-<li>Проводим диагностику (по возможности — бесплатно).</li>
-<li>Согласуем стоимость и сроки выполнения.</li>
-<li>Выполняем ремонт и проверку работоспособности.</li>
-<li>Передаём технику с гарантией на работы.</li>
-</ol>
-<div class="section__actions">
-<a class="btn btn--primary" href="#contacts">Оставить заявку на ремонт</a>
-<a class="btn btn--ghost" href="/repair.html">Подробно о сервисе...</a>
-</div>
-</div>
-</div>
-</section>
+            </div>
+
+            <div class="repair-grid-3">
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Диагностика неисправностей</h3>
+                    <p class="card__text">
+                        Быстрая и точная диагностика оборудования для выявления причин неисправностей.
+                        По возможности — диагностика бесплатно.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Проверка электронных систем</li>
+                        <li>Тестирование полётных характеристик</li>
+                        <li>Анализ данных логов полётов</li>
+                    </ul>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Ремонт силовой части</h3>
+                    <p class="card__text">
+                        Ремонт двигателей, пропеллеров, рамы и других механических компонентов агродрона.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Замена двигателей и ESC</li>
+                        <li>Восстановление рамы</li>
+                        <li>Ремонт шасси и подвесов</li>
+                    </ul>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Восстановление полётных батарей</h3>
+                    <p class="card__text">
+                        Профессиональное восстановление и обслуживание полётных батарей для продления их срока службы.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Балансировка элементов</li>
+                        <li>Замена повреждённых ячеек</li>
+                        <li>Тестирование ёмкости и токов</li>
+                    </ul>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Ремонт электроники</h3>
+                    <p class="card__text">
+                        Ремонт и замена плат управления, контроллеров полёта, GPS-модулей и другого электронного оборудования.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Ремонт полётных контроллеров</li>
+                        <li>Замена датчиков и сенсоров</li>
+                        <li>Настройка радиоаппаратуры</li>
+                    </ul>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Обслуживание систем внесения</h3>
+                    <p class="card__text">
+                        Ремонт и настройка систем внесения СЗР: форсунок, насосов, баков и системы дозирования.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Чистка и калибровка форсунок</li>
+                        <li>Ремонт насосов и клапанов</li>
+                        <li>Настройка системы дозирования</li>
+                    </ul>
+                </article>
+
+                <article class="card card--service tilt">
+                    <h3 class="card__title">Программное обеспечение</h3>
+                    <p class="card__text">
+                        Обновление и настройка ПО, калибровка оборудования, восстановление после сбоев программного обеспечения.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Обновление прошивок</li>
+                        <li>Калибровка датчиков</li>
+                        <li>Восстановление после сбоев</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="repair-cta-bar">
+                <div class="repair-cta-bar__text">
+                    <p class="repair-cta-bar__title">Нужна консультация по ремонту?</p>
+                    <p class="repair-cta-bar__sub">Опишите проблему — мы подскажем стоимость и сроки.</p>
+                </div>
+                <div class="repair-cta-bar__actions">
+                    <a href="#request" class="btn btn--primary">Оставить заявку</a>
+                    <a href="tel:+79179845875" class="btn btn--outline">Позвонить +7 (917) 984-58-75</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОЦЕСС РЕМОНТА -->
+    <section class="section section--light repair-process" id="process" aria-labelledby="process-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="process-title">Как мы работаем</h2>
+                <p class="section__subtitle">
+                    Чёткий процесс от приёмки агродрона до выдачи после ремонта с гарантией качества.
+                </p>
+            </div>
+
+            <div class="repair-steps">
+                <div class="repair-step tilt">
+                    <div class="repair-step__number">1</div>
+                    <div class="repair-step__content">
+                        <h3 class="repair-step__title">Приёмка и диагностика</h3>
+                        <p class="repair-step__text">
+                            Принимаем оборудование, фиксируем внешний вид и заявленные неисправности.
+                            Проводим диагностику (по возможности — бесплатно) для определения точной причины поломки.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="repair-step tilt">
+                    <div class="repair-step__number">2</div>
+                    <div class="repair-step__content">
+                        <h3 class="repair-step__title">Согласование стоимости и сроков</h3>
+                        <p class="repair-step__text">
+                            После диагностики сообщаем точную стоимость ремонта и сроки выполнения работ.
+                            Согласовываем с заказчиком и приступаем к ремонту только после подтверждения.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="repair-step tilt">
+                    <div class="repair-step__number">3</div>
+                    <div class="repair-step__content">
+                        <h3 class="repair-step__title">Выполнение ремонта</h3>
+                        <p class="repair-step__text">
+                            Проводим ремонт с использованием качественных комплектующих и профессионального оборудования.
+                            Соблюдаем технологические стандарты и требования безопасности.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="repair-step tilt">
+                    <div class="repair-step__number">4</div>
+                    <div class="repair-step__content">
+                        <h3 class="repair-step__title">Тестирование и проверка</h3>
+                        <p class="repair-step__text">
+                            После ремонта проводим комплексное тестирование всех систем агродрона.
+                            Проверяем работоспособность в условиях, приближенных к реальным полётам.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="repair-step tilt">
+                    <div class="repair-step__number">5</div>
+                    <div class="repair-step__content">
+                        <h3 class="repair-step__title">Выдача с гарантией</h3>
+                        <p class="repair-step__text">
+                            Передаём отремонтированный агродрон заказчику с полным комплектом документации.
+                            Предоставляем гарантию на выполненные работы и заменённые комплектующие.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОЧЕМУ МЫ -->
+    <section class="section repair-why" aria-labelledby="why-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="why-title">Почему выбирают наш сервис</h2>
+                <p class="section__subtitle">
+                    Профессиональный подход к ремонту агродронов с фокусом на качество и долговечность.
+                </p>
+            </div>
+
+            <div class="repair-grid-2">
+                <div class="card tilt">
+                    <h3 class="card__title">Опытные специалисты</h3>
+                    <p class="card__text">
+                        Наши инженеры имеют многолетний опыт работы с агродронами различных марок и моделей.
+                        Проходили специализированное обучение у производителей оборудования.
+                    </p>
+                </div>
+
+                <div class="card tilt">
+                    <h3 class="card__title">Качественные комплектующие</h3>
+                    <p class="card__text">
+                        Используем только оригинальные или совместимые комплектующие от проверенных поставщиков.
+                        Это гарантирует долговечность ремонта и стабильную работу оборудования.
+                    </p>
+                </div>
+
+                <div class="card tilt">
+                    <h3 class="card__title">Современное оборудование</h3>
+                    <p class="card__text">
+                        Оснащены профессиональным диагностическим и ремонтным оборудованием,
+                        которое позволяет точно выявлять неисправности и качественно выполнять ремонт.
+                    </p>
+                </div>
+
+                <div class="card tilt">
+                    <h3 class="card__title">Гарантия на работы</h3>
+                    <p class="card__text">
+                        Предоставляем гарантию на все выполненные работы. Если проблема повторится
+                        в течение гарантийного срока — устраним её бесплатно.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧАСТЫЕ ПОЛОМКИ -->
+    <section class="section section--light repair-common" aria-labelledby="common-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="common-title">Частые поломки агродронов</h2>
+                <p class="section__subtitle">
+                    С какими проблемами чаще всего сталкиваются операторы агродронов и как мы их решаем.
+                </p>
+            </div>
+
+            <div class="repair-grid-3">
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Падения и механические повреждения</h3>
+                    <p class="card__text">
+                        Ремонт после падений, столкновений, повреждений от веток и других механических воздействий.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Замена рамы и каркаса</li>
+                        <li>Ремонт креплений двигателей</li>
+                        <li>Восстановление обшивки</li>
+                    </ul>
+                </div>
+
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Проблемы с электроникой</h3>
+                    <p class="card__text">
+                        Выход из строя контроллеров полёта, GPS-модулей, датчиков, регуляторов скорости.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Замена плат управления</li>
+                        <li>Ремонт схем питания</li>
+                        <li>Настройка и калибровка</li>
+                    </ul>
+                </div>
+
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Износ полётных батарей</h3>
+                    <p class="card__text">
+                        Снижение ёмкости, разбалансировка элементов, повреждение оболочки, проблемы с разъёмами.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Восстановление баланса</li>
+                        <li>Замена ячеек</li>
+                        <li>Ремонт BMS-систем</li>
+                    </ul>
+                </div>
+
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Неисправности системы внесения</h3>
+                    <p class="card__text">
+                        Засорение форсунок, поломки насосов, утечки в баках, сбои системы дозирования.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Чистка и замена форсунок</li>
+                        <li>Ремонт насосов</li>
+                        <li>Герметизация соединений</li>
+                    </ul>
+                </div>
+
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Проблемы с двигателями</h3>
+                    <p class="card__text">
+                        Перегрев, потеря мощности, вибрации, заклинивание подшипников, повреждение обмоток.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Замена двигателей</li>
+                        <li>Ремонт подшипников</li>
+                        <li>Балансировка роторов</li>
+                    </ul>
+                </div>
+
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Программные сбои</h3>
+                    <p class="card__text">
+                        Сброс настроек, ошибки калибровки, проблемы с подключением, потеря связи с пультом.
+                    </p>
+                    <ul class="repair-bullets">
+                        <li>Обновление прошивок</li>
+                        <li>Сброс и настройка</li>
+                        <li>Калибровка оборудования</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЗАЯВКА НА РЕМОНТ -->
+    <section class="section repair-request" id="request" aria-labelledby="request-title">
+        <div class="section__inner section__inner--split">
+            <div>
+                <div class="section__header">
+                    <h2 class="section__title" id="request-title">Оставить заявку на ремонт</h2>
+                    <p class="section__subtitle">
+                        Опишите проблему с вашим агродроном — мы свяжемся с вами для уточнения деталей и расчёта стоимости.
+                    </p>
+                </div>
+
+                <div class="repair-grid-2">
+                    <div class="card tilt">
+                        <h3 class="card__title">Позвонить</h3>
+                        <p class="card__text">Быстро описать проблему по телефону и получить предварительную консультацию.</p>
+                        <div class="repair-phone-numbers">
+                            <a class="repair-phone" href="tel:+79179845875">+7 (917) 984-58-75</a>
+                            <a class="repair-phone" href="tel:+79376336529">+7 (937) 633-65-29</a>
+                        </div>
+                    </div>
+                    <div class="card tilt">
+                        <h3 class="card__title">Telegram для связи</h3>
+                        <p class="card__text">Написать в Telegram — можно отправить фото/видео проблемы.</p>
+                        <a class="card__link" href="https://t.me/+79063013555" target="_blank" rel="noopener">
+                            Написать в Telegram →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="repair-note">
+                    <p class="repair-note__title">Что подготовить перед обращением</p>
+                    <ul class="repair-bullets">
+                        <li>Модель и марка агродрона</li>
+                        <li>Описание проблемы (что произошло, при каких условиях)</li>
+                        <li>Фото/видео повреждений (если есть)</li>
+                        <li>Приблизительный срок эксплуатации</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ФОРМА -->
+            <div class="section__media">
+                <form class="contact-form">
+                    <h3 class="contact-form__title">Заявка на ремонт</h3>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Ваше имя</span>
+                        <input type="text" name="name" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Телефон</span>
+                        <input type="tel" name="phone" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Модель агродрона</span>
+                        <input type="text" name="model" placeholder="Например: DJI Agras T30, Геоскан и т.д.">
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Тип проблемы</span>
+                        <select name="problem_type">
+                            <option value="mechanical">Механические повреждения (падение, удар)</option>
+                            <option value="electronics">Проблемы с электроникой</option>
+                            <option value="battery">Проблемы с батареей</option>
+                            <option value="spraying">Неисправность системы внесения СЗР</option>
+                            <option value="software">Программные сбои</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Описание проблемы</span>
+                        <textarea name="message" rows="4" placeholder="Подробно опишите, что случилось, при каких условиях, какие симптомы..."></textarea>
+                    </label>
+
+                    <label class="contact-form__checkbox">
+                        <input type="checkbox" name="agree" required>
+                        <span>
+                            Я даю согласие на обработку персональных данных и принимаю
+                            <a href="policy.html">Политику конфиденциальности</a>.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="btn btn--primary contact-form__submit">
+                        Отправить заявку
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
 </main>
+
 <footer class="site-footer">
     <div class="site-footer__inner container">
         <div class="site-footer__left">
@@ -141,6 +553,5 @@
 
     <script defer src="../assets/js/app.js"></script>
 </footer>
-<script src="../assets/js/app.js"></script>
 </body>
 </html>

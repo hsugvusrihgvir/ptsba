@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости — Поволжский центр беспилотной авиации</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description"
+          content="Новости и обновления от Поволжского центра беспилотной авиации. Обработка полей агродронами, обучение пилотов, сервис и ремонт.">
+
+    <link rel="stylesheet" href="../assets/style/main.css">
+    <link rel="stylesheet" href="../assets/style/news.css">
+    <link rel="stylesheet" href="../assets/style/pages.css">
+    <link rel="stylesheet" href="../assets/style/layout.css">
+    <link rel="stylesheet" href="../assets/style/header-footer.css">
+    <link rel="stylesheet" href="../assets/style/sections.css">
+    <link rel="stylesheet" href="../assets/style/hero.css">
+    <link rel="stylesheet" href="../assets/style/cards.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Стили для новостей */
+        .news-list {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .news-item {
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 18px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .news-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .news-item__header {
+            padding: 1.5rem 1.5rem 0.5rem;
+        }
+
+        .news-item__date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .news-item__content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .news-item__text {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        .news-item__text p {
+            margin-bottom: 1rem;
+        }
+
+        .news-item__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-item__images {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .news-item__image {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .news-item__image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item__image:hover img {
+            transform: scale(1.03);
+        }
+
+        .news-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-soft);
+            font-size: 1.1rem;
+        }
+
+        .news-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-soft);
+        }
+
+        .news-load-more {
+            text-align: center;
+            margin: 2rem 0 3rem;
+        }
+
+        .news-error {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-soft);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            border: 1px dashed rgba(148, 163, 184, 0.3);
+        }
+
+        .news-error a {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="page">
+<a id="top"></a>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="../index.html">
+            <img
+                    class="site-header__logo-img"
+                    src="../assets/img/logo/logo300.png"
+                    srcset="
+            ../assets/img/logo/logo300.png 1x,
+            ../assets/img/logo/logo500.png 2x
+             "
+                    alt="Поволжский центр беспилотной авиации"
+                    width="70"
+                    height="70"
+            >
+            <div class="site-header__logo-text">
+                <span class="site-header__logo-title">Поволжский центр беспилотной авиации</span>
+                <span class="site-header__logo-subtitle">Обработка полей дронами и обучение пилотов</span>
+            </div>
+        </a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav__toggle" type="button" aria-expanded="false" aria-label="Открыть меню">
+                ☰
+            </button>
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
+                <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
+                <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
+                <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
+                <li class="site-nav__item"><a href="news.html" class="site-nav__link is-active">Новости</a></li>
+                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Информация</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="page-main news">
+    <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a href="../index.html">Главная</a>
+            <span aria-hidden="true">/</span>
+            <span>Новости</span>
+        </nav>
+        <h1 class="page-title">Новости центра</h1>
+        <p class="page-lead">Актуальные события, обновления и полезная информация от Поволжского центра беспилотной авиации.</p>
+
+        <!-- Список новостей -->
+        <div class="news-list" id="newsList">
+            <!-- Новости будут загружены через JavaScript -->
+        </div>
+
+        <div class="news-load-more">
+            <button class="btn btn--outline" id="loadMoreBtn" style="display: none;">Показать больше новостей</button>
+        </div>
+
+        <div class="news-empty" id="emptyNews" style="display: none;">
+            <p>На данный момент нет новостей. Следите за обновлениями!</p>
+        </div>
+
+        <div class="news-loading" id="loadingNews">
+            <p>Загрузка новостей...</p>
+        </div>
+
+        <div class="news-error" id="errorNews" style="display: none;">
+            <p>Не удалось загрузить новости. Пожалуйста, попробуйте обновить страницу позже.</p>
+            <p><small>Вы всегда можете связаться с нами через <a href="../index.html#contacts">контакты на главной странице</a>.</small></p>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer__inner container">
+        <div class="site-footer__left">
+            <p class="site-footer__title">
+                Поволжский центр беспилотной авиации
+            </p>
+            <p class="site-footer__text">
+                Обработка полей агродронами, обучение пилотов и сервис.
+            </p>
+        </div>
+        <div class="site-footer__middle">
+            <ul class="site-footer__nav">
+                <li><a href="#top">Наверх</a></li>
+                <li><a href="info.html">Открытая информация</a></li>
+                <li><a href="policy.html">Политика конфиденциальности</a></li>
+                <li>
+                    <a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">
+                        Telegram-канал центра
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="site-footer__right">
+            <p class="site-footer__copy">
+                © <span id="js-year">2025</span> Поволжский центр беспилотной авиации
+            </p>
+            <p class="site-footer__disclaimer">
+                Сайт не является публичной офертой и носит информационный характер.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Основной JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Конфигурация (можно вынести в отдельный файл config.js при необходимости)
+        const API_CONFIG = {
+            // Укажите адрес вашего API сервера
+            // Локально: "http://localhost:8000"
+            // Продакшн: "" или "https://ваш-домен.ru"
+            API_BASE_URL: "http://localhost:8000",
+
+            // Настройки новостей
+            ITEMS_PER_PAGE: 5
+        };
+
+        // Переменные для состояния
+        let currentPage = 1;
+        let isLoading = false;
+        let hasMoreNews = true;
+        let allNewsLoaded = [];
+
+        // Элементы DOM
+        const newsList = document.getElementById('newsList');
+        const emptyNews = document.getElementById('emptyNews');
+        const loadingNews = document.getElementById('loadingNews');
+        const errorNews = document.getElementById('errorNews');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+        // Форматирование даты
+        function formatDate(dateString) {
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('ru-RU', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                return dateString;
+            }
+        }
+
+        // Экранирование HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Обработка текста новости (переносы строк)
+        function processNewsText(text) {
+            if (!text) return '';
+            const escaped = escapeHtml(text);
+            return escaped.replace(/\n/g, '<br>');
+        }
+
+        // Загрузка новостей
+        async function loadNews(page = 1) {
+            if (isLoading) return;
+
+            isLoading = true;
+            loadingNews.style.display = 'block';
+            errorNews.style.display = 'none';
+
+            try {
+                const limit = API_CONFIG.ITEMS_PER_PAGE;
+
+                const response = await fetch(
+                    `${API_CONFIG.API_BASE_URL}/api/news?limit=${limit}`,
+                    {
+                        signal: AbortSignal.timeout(8000) // Таймаут 8 секунд
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const news = await response.json();
+
+                // Скрываем индикатор загрузки
+                loadingNews.style.display = 'none';
+
+                if (!news || news.length === 0) {
+                    if (page === 1) {
+                        emptyNews.style.display = 'block';
+                        newsList.innerHTML = '';
+                    }
+                    hasMoreNews = false;
+                    loadMoreBtn.style.display = 'none';
+                    return;
+                }
+
+                // Если это первая страница, очищаем список
+                if (page === 1) {
+                    allNewsLoaded = news;
+                    newsList.innerHTML = '';
+                } else {
+                    allNewsLoaded = [...allNewsLoaded, ...news];
+                }
+
+                // Отображаем все загруженные новости
+                renderNews(allNewsLoaded);
+
+                // Проверяем, есть ли еще новости
+                if (news.length < limit) {
+                    hasMoreNews = false;
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'block';
+                }
+
+                currentPage = page;
+
+            } catch (error) {
+                console.error('Ошибка загрузки новостей:', error);
+                loadingNews.style.display = 'none';
+
+                // Показываем нейтральное сообщение об ошибке
+                errorNews.style.display = 'block';
+                newsList.innerHTML = '';
+                emptyNews.style.display = 'none';
+                loadMoreBtn.style.display = 'none';
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        // Отображение новостей
+        function renderNews(newsArray) {
+            if (!newsArray || newsArray.length === 0) {
+                emptyNews.style.display = 'block';
+                newsList.innerHTML = '';
+                return;
+            }
+
+            emptyNews.style.display = 'none';
+
+            const newsHtml = newsArray.map(item => {
+                const imagesHtml = item.images && item.images.length > 0
+                    ? `<div class="news-item__images">
+                    ${item.images.map(img => `
+                        <div class="news-item__image">
+                            <img src="${API_CONFIG.API_BASE_URL}${img}"
+                                 alt="Изображение к новости"
+                                 loading="lazy">
+                        </div>
+                    `).join('')}
+                </div>`
+                    : '';
+
+                return `
+                <article class="news-item">
+                    <div class="news-item__header">
+                        <div class="news-item__date">${formatDate(item.created_at)}</div>
+                    </div>
+                    <div class="news-item__content">
+                        <div class="news-item__text">${processNewsText(item.text)}</div>
+                        ${imagesHtml}
+                    </div>
+                </article>
+            `;
+            }).join('');
+
+            newsList.innerHTML = newsHtml;
+        }
+
+        // Кнопка "Загрузить еще"
+        loadMoreBtn.addEventListener('click', function() {
+            if (!isLoading && hasMoreNews) {
+                loadNews(currentPage + 1);
+            }
+        });
+
+        // Загружаем первую страницу новостей
+        loadNews(1);
+
+        // Обновляем год в футере
+        document.getElementById('js-year').textContent = new Date().getFullYear();
+    });
+</script>
+
+</body>
+</html>

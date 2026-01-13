@@ -2,13 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Обучение</title>
+    <title>Обучение пилотов агродронов — Поволжский центр беспилотной авиации</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="description"
-          content="Обработка полей агродронами, обучение пилотов с выдачей свидетельства внешнего пилота, ремонт и сервис агродронов в Поволжье.">
-
+    <meta name="description" content="Профессиональное обучение внешних пилотов агродронов с выдачей свидетельства. Практика на учебном аэродроме, работа с реальной техникой.">
 
     <link rel="stylesheet" href="../assets/style/main.css">
+    <link rel="stylesheet" href="../assets/style/training.css">
     <link rel="stylesheet" href="../assets/style/pages.css">
     <link rel="stylesheet" href="../assets/style/layout.css">
     <link rel="stylesheet" href="../assets/style/header-footer.css">
@@ -20,8 +19,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page">
 <a id="top"></a>
+
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="../index.html">
@@ -49,88 +49,389 @@
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
                 <li class="site-nav__item"><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
-                <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
+                <li class="site-nav__item"><a href="training.html" class="site-nav__link is-active">Обучение</a></li>
                 <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
                 <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
-                <li class="site-nav__item"><a href="project-souls.html" class="site-nav__link">Соцпроект</a></li>
-                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Открытая информация</a></li>
-                <li class="site-nav__item"><a href="policy.html" class="site-nav__link">Политика</a></li>
+                <li class="site-nav__item"><a href="news.html" class="site-nav__link">Новости</a></li>
+                <li class="site-nav__item"><a href="info.html" class="site-nav__link">Информация</a></li>
             </ul>
         </nav>
     </div>
 </header>
-<main class="page-main">
-    <div class="container">
-        <nav class="breadcrumbs" aria-label="Хлебные крошки">
-            <a href="../index.html">Главная</a>
-            <span aria-hidden="true">/</span>
-            <span>Обучение</span>
-        </nav>
-        <h1 class="page-title">Обучение</h1>
-        <p class="page-lead">Программа подготовки пилотов агродронов: теория, практика и оформление документов.</p>
-    </div>
-<section class="section section--accent" id="training">
-<div class="section__inner container section__inner--split">
-<div class="section__media">
-<div class="section__image-placeholder">
-<picture class="section__image">
-<source sizes="(max-width: 960px) 100vw, 42vw" srcset="../assets/img/photo/im1.jpg"/>
-<img alt="Фото обучения" height="430" loading="lazy" src="../assets/img/photo/im1.jpg" width="700"/>
-</picture>
-</div>
-</div>
-<div class="section__content">
-<h2 class="section__title">Обучение пилотов агродронов</h2>
-<p class="section__subtitle">
-                    Подготовим вас к работе с агродронами: от теории и техники безопасности до практических вылетов.
+
+<main class="page-main training">
+
+    <!-- HERO: Обучение -->
+    <section class="section section--light training-hero" aria-labelledby="training-hero-title">
+        <div class="section__inner section__inner--split">
+            <div class="training-hero__content">
+                <div class="section__header">
+                    <h1 class="section__title" id="training-hero-title">Профессиональное обучение пилотов агродронов</h1>
+                    <p class="section__subtitle">
+                        Получите свидетельство внешнего пилота сельскохозяйственной БАС. Практика на учебном аэродроме с реальной техникой. Подготовка к работе в соответствии с постановлением Правительства РФ №1510.
+                    </p>
+                </div>
+
+                <ul class="training-chips" aria-label="Ключевые особенности">
+                    <li>Свидетельство внешнего пилота</li>
+                    <li>Вся необходимая техника предоставляется</li>
+                    <li>Интенсивный курс 3–5 дней</li>
+                    <li>Теория + практика на аэродроме</li>
+                </ul>
+
+                <div class="section__actions">
+                    <a href="#signup" class="btn btn--primary">Записаться на курс</a>
+                    <a href="#program" class="btn btn--outline">Программа обучения</a>
+                    <a href="../index.html#contacts" class="btn btn--ghost">Консультация</a>
+                </div>
+
+                <div class="training-quick">
+                    <div class="training-quick__item">
+                        <p class="training-quick__title">Лицензия</p>
+                        <p class="training-quick__text">ЛО35-01279-64/01006952. Работаем официально.</p>
+                    </div>
+                    <div class="training-quick__item">
+                        <p class="training-quick__title">Результат</p>
+                        <p class="training-quick__text">Вы готовы к работе оператором, специалистом по обслуживанию или консультантом.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="training-media">
+                <div class="media-frame tilt">
+                    <picture>
+                        <source srcset="../assets/img/photo/training/t1.jpg" type="image/jpeg">
+                        <img src="../assets/img/photo/training/t1.jpg" alt="Практическое занятие на аэродроме — управление агродроном" loading="lazy">
+                    </picture>
+                </div>
+                <div class="training-media__mini">
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/training/t2.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/training/t2.JPG" alt="Инструктор объясняет устройство агродрона" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="media-frame media-frame--small tilt">
+                        <picture>
+                            <source srcset="../assets/img/photo/training/t3.JPG" type="image/jpeg">
+                            <img src="../assets/img/photo/training/t3.JPG" alt="Рабочее место пилота: пульт управления и планшет" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: ПРОГРАММА ОБУЧЕНИЯ (Одна программа) -->
+    <section class="section training-program" id="program" aria-labelledby="program-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="program-title">Программа обучения пилотов</h2>
+                <p class="section__subtitle">
+                    Интенсивный курс 3–5 дней с теоретической и практической подготовкой на учебном аэродроме.
                 </p>
-<ul class="section__list">
-<li>Сочетание теории и практики на учебном аэродроме</li>
-<li>Освоение планирования полётов и настройки маршрутов</li>
-<li>Подготовка к получению свидетельства внешнего пилота</li>
-</ul>
-<div class="section__actions">
-<a class="btn btn--primary" href="/training.html">Подробно об обучении...</a>
-<a class="btn btn--outline" href="#contacts">Задать вопрос по обучению</a>
-</div>
-</div>
-</div>
-</section>
+            </div>
+
+            <div class="training-grid-2">
+                <!-- Карточка с видео основной программы -->
+                <article class="card training-card training-card--with-media tilt">
+                    <div class="training-card__media">
+                        <video class="training-video" controls preload="metadata" poster="../assets/img/photo/services/s1.JPG">
+                            <source src="../assets/img/photo/training/v1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="training-card__body">
+                        <h3 class="card__title">Курс подготовки внешних пилотов агродронов</h3>
+                        <p class="card__text">
+                            Полный цикл обучения для получения свидетельства внешнего пилота сельскохозяйственной беспилотной авиационной системы.
+                        </p>
+                        <ul class="training-bullets">
+                            <li><strong>Теоретическая подготовка:</strong> планирование полётных заданий, агрономические особенности, безопасность полётов, нормативная база (Постановление №1510).</li>
+                            <li><strong>Техническое обслуживание:</strong> устройство и обслуживание аграрных БВС, основы диагностики.</li>
+                            <li><strong>Практические занятия:</strong> управление дронами на аэродроме, работа с навигационным оборудованием и ПО для планирования полётов.</li>
+                            <li><strong>Подготовка к экзамену:</strong> отработка процедур, оформление полётной документации.</li>
+                        </ul>
+                        <div class="section__actions">
+                            <a href="#signup" class="btn btn--primary">Записаться на курс</a>
+                            <a href="#skills" class="btn btn--ghost">Чему научитесь</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Блок "что входит" рядом с видео -->
+                <div class="training-side">
+                    <div class="card training-side__card tilt">
+                        <h3 class="card__title">Что входит в обучение</h3>
+                        <ul class="training-bullets">
+                            <li>Все учебные материалы и доступ к технике</li>
+                            <li>Занятия с инструктором на учебном аэродроме</li>
+                            <li>Помощь в оформлении документов для свидетельства</li>
+                            <li>Консультационная поддержка после обучения</li>
+                        </ul>
+                    </div>
+                    <div class="card training-side__card tilt">
+                        <h3 class="card__title">Документ по окончании</h3>
+                        <p class="card__text">
+                            После успешного прохождения курса и сдачи экзамена вы получаете <strong>свидетельство внешнего пилота сельскохозяйственной беспилотной авиационной системы</strong> установленного образца, соответствующее требованиям законодательства.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: СОЦИАЛЬНЫЙ ПРОЕКТ -->
+    <section class="section social-project-section" id="social-project" aria-labelledby="social-project-title">
+        <div class="section__inner container">
+            <div class="section__header">
+                <h2 class="section__title" id="social-project-title">«Душевные люди беспилотной авиации»</h2>
+                <p class="section__subtitle">
+                    Специально разработанный образовательный проект, направленный на обучение людей с ограниченными возможностями востребованной профессии внешнего пилота сельскохозяйственной беспилотной системы.
+                </p>
+            </div>
+
+            <div class="section__inner--split social-project-layout">
+                <div class="section__content">
+                    <div class="card social-project-card">
+
+                        <div class="social-project-intro">
+                            <p class="training-badge">Бесплатно при поддержке Фонда президентских грантов</p>
+                            <p><strong>Благодаря нашей программе вы сможете освоить новые знания и приобрести уникальные навыки управления беспилотниками, применяя их в реальной практике.</strong></p>
+                        </div>
+
+                        <div class="social-project-features">
+                            <h4 class="card__subtitle">Мы предлагаем:</h4>
+                            <ul class="training-bullets">
+                                <li><strong>Бесплатное, интенсивное очное обучение</strong>, которое включает в себя практические занятия и работу непосредственно с оборудованием.</li>
+                                <li>Курс <strong>разработан профессионалами отрасли</strong> и адаптирован специально для вас.</li>
+                                <li>Вы получите <strong>теоретические знания и отработаете навыки</strong> на реальных беспилотниках.</li>
+                                <li><strong>Возможность трудоустройства</strong> после успешного завершения курса!</li>
+                            </ul>
+                        </div>
+
+                        <div class="social-project-details">
+                            <h4 class="card__subtitle">Программа обучения:</h4>
+                            <p class="card__text">
+                                Обучение длится <strong>40 часов</strong>. Программа имеет максимально практическую направленность и разработана таким образом, чтобы каждый участник мог уверенно овладеть всеми необходимыми компетенциями. Занятия проходят очно.
+                            </p>
+                            <p class="card__text">
+                                <strong>По окончании курсов</strong> вы будете сертифицированным оператором сельскохозяйственных дронов и готовы приступить к работе по мониторингу полей, аэрофотосъемке и обработке данных с использованием современных технологий.
+                            </p>
+                        </div>
+
+                        <div class="social-project-audience">
+                            <h4 class="card__subtitle">Кто может присоединиться?</h4>
+                            <p class="card__text">
+                                Мы приглашаем <strong>желающих с ограничениями по здоровью от 18 лет</strong>, независимо от пола и уровня подготовки, пройти бесплатное обучение и обрести новую профессию.
+                            </p>
+                        </div>
+
+                        <div class="social-project-note">
+                            <p class="training-footnote">
+                                «Душевные люди беспилотной авиации» — это <strong>партнёрский проект АНО «Центр развития культуры и инноваций» и ООО «Поволжский центр беспилотной авиации»</strong>, получивший поддержку Фонда президентских грантов.
+                            </p>
+                        </div>
+
+                        <div class="section__actions">
+                            <a href="https://goo.su/rhpqSzp" class="btn btn--primary" target="_blank" rel="noopener">Подать заявку на проект</a>
+                            <a href="../index.html#contacts" class="btn btn--outline">Связаться для консультации</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section__media">
+                    <div class="social-project-media">
+                        <!-- Контейнер для двух вертикальных изображений -->
+                        <div class="media-stack">
+                            <div class="media-frame media-frame--stack tilt">
+                                <picture>
+                                    <source srcset="../assets/img/photo/training/t4.jpg" type="image/jpeg">
+                                    <img src="../assets/img/photo/training/t4.jpg" alt="Участники социального проекта на теоретическом занятии" loading="lazy">
+                                </picture>
+                            </div>
+                            <div class="media-frame media-frame--stack tilt">
+                                <picture>
+                                    <source srcset="../assets/img/photo/training/t5.jpg" type="image/jpeg">
+                                    <img src="../assets/img/photo/training/t5.jpg" alt="Практическая часть обучения на аэродроме" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: НАВЫКИ (остаётся без изменений) -->
+    <section class="section training-skills" id="skills" aria-labelledby="skills-title">
+        <div class="section__inner section__inner--split">
+            <div>
+                <div class="section__header">
+                    <h2 class="section__title" id="skills-title">На курсе вы научитесь</h2>
+                    <p class="section__subtitle">Все практические навыки, необходимые для работы внешним пилотом агродронов.</p>
+                </div>
+
+                <ul class="training-checklist">
+                    <li>Составлять план полёта с учётом агрономических особенностей</li>
+                    <li>Получать разрешение на использование воздушного пространства</li>
+                    <li>Выбирать, использовать и устанавливать полезную нагрузку для авиационных работ</li>
+                    <li>Практическим навыкам управления агродроном</li>
+                    <li>Использовать специальное ПО для составления программы полёта</li>
+                    <li>Осуществлять техническое обслуживание агродрона</li>
+                    <li>Грамотно вести полётную документацию</li>
+                </ul>
+
+                <div class="section__actions">
+                    <a href="#program" class="btn btn--primary">Смотреть программу</a>
+                    <a href="#signup" class="btn btn--ghost">Записаться</a>
+                </div>
+            </div>
+
+            <div class="training-side">
+                <div class="card training-side__card tilt">
+                    <h3 class="card__title">Зачем это нужно</h3>
+                    <p class="card__text">
+                        Приобретённые знания и навыки позволят эффективно применять агродроны в сельском хозяйстве, увеличивая урожайность и оптимизируя процессы.
+                    </p>
+                    <p class="card__text">
+                        Обучение проводится квалифицированными преподавателями с большим опытом работы в области сельскохозяйственной беспилотной авиации.
+                    </p>
+                </div>
+
+                <div class="media-frame tilt">
+                    <picture>
+                        <source srcset="../assets/img/photo/training/t6.jpg" type="image/jpeg">
+                        <img src="../assets/img/photo/training/t6.jpg" alt="Учебный процесс в классе" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: КЕМ ВЫ СТАНЕТЕ (остаётся без изменений) -->
+    <section class="section section--light training-outcomes" aria-labelledby="outcomes-title">
+        <div class="section__inner">
+            <div class="section__header">
+                <h2 class="section__title" id="outcomes-title">После завершения курсов вы</h2>
+                <p class="section__subtitle">Варианты профессионального развития после получения свидетельства.</p>
+            </div>
+
+            <div class="training-grid-3">
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Специалист по обслуживанию и ремонту БПЛА</h3>
+                    <p class="card__text">Понимание устройства, техобслуживания и грамотного ведения документации.</p>
+                </div>
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Оператор беспилотных авиационных систем</h3>
+                    <p class="card__text">Управление агродроном, работа с навигационным оборудованием и ПО.</p>
+                </div>
+                <div class="card card--service tilt">
+                    <h3 class="card__title">Консультант по внедрению беспилотных технологий</h3>
+                    <p class="card__text">Внедрение и использование БПЛА в сельхозпредприятиях.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ: ЗАПИСАТЬСЯ (остаётся без изменений) -->
+    <section class="section training-signup" id="signup" aria-labelledby="signup-title">
+        <div class="section__inner section__inner--split">
+            <div>
+                <div class="section__header">
+                    <h2 class="section__title" id="signup-title">Записаться на обучение</h2>
+                    <p class="section__subtitle">
+                        Выберите удобный способ связи или заполните форму. Ответим на все вопросы по обучению.
+                    </p>
+                </div>
+
+                <div class="training-grid-2">
+                    <div class="card tilt">
+                        <h3 class="card__title">На основной курс (3-5 дней)</h3>
+                        <p class="card__text">Заполните форму справа — мы свяжемся для уточнения деталей.</p>
+                        <a href="#form" class="card__link">Перейти к форме →</a>
+                    </div>
+                    <div class="card tilt">
+                        <h3 class="card__title">На социальный проект (бесплатно)</h3>
+                        <p class="card__text">Подайте заявку через специальную форму партнёров проекта.</p>
+                        <a href="https://goo.su/rhpqSzp" class="card__link" target="_blank" rel="noopener">Подать заявку на проект →</a>
+                    </div>
+                    <div class="card tilt">
+                        <h3 class="card__title">Telegram для вопросов</h3>
+                        <p class="card__text">Написать в Telegram-канал центра с любыми вопросами.</p>
+                        <a href="https://t.me/ptsbabalashov" class="card__link" target="_blank" rel="noopener">Открыть канал →</a>
+                    </div>
+                    <div class="card tilt">
+                        <h3 class="card__title">Телефон для связи</h3>
+                        <p class="card__text">Позвоните для быстрой консультации по обучению.</p>
+                        <a href="tel:+79179845875" class="card__link">+7 (917) 984-58-75 →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма -->
+            <div class="section__media" id="form">
+                <form class="contact-form">
+                    <h3 class="contact-form__title">Заявка на основной курс обучения</h3>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Ваше имя</span>
+                        <input type="text" name="name" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Телефон</span>
+                        <input type="tel" name="phone" required>
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Город</span>
+                        <input type="text" name="city" placeholder="Откуда планируете приехать">
+                    </label>
+
+                    <label class="contact-form__field">
+                        <span class="contact-form__label">Комментарий</span>
+                        <textarea name="message" rows="4" placeholder="Опыт (если есть), желаемые даты, вопросы"></textarea>
+                    </label>
+
+                    <label class="contact-form__checkbox">
+                        <input type="checkbox" name="agree" required>
+                        <span>
+                            Я даю согласие на обработку персональных данных и принимаю
+                            <a href="policy.html">Политику конфиденциальности</a>.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="btn btn--primary contact-form__submit">
+                        Отправить заявку
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
 </main>
+
 <footer class="site-footer">
     <div class="site-footer__inner container">
         <div class="site-footer__left">
-            <p class="site-footer__title">
-                Поволжский центр беспилотной авиации
-            </p>
-            <p class="site-footer__text">
-                Обработка полей агродронами, обучение пилотов и сервис.
-            </p>
+            <p class="site-footer__title">Поволжский центр беспилотной авиации</p>
+            <p class="site-footer__text">Профессиональное обучение пилотов агродронов, обработка полей, ремонт и сервис.</p>
         </div>
         <div class="site-footer__middle">
             <ul class="site-footer__nav">
                 <li><a href="#top">Наверх</a></li>
                 <li><a href="info.html">Открытая информация</a></li>
                 <li><a href="policy.html">Политика конфиденциальности</a></li>
-                <li>
-                    <a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">
-                        Telegram-канал центра
-                    </a>
-                </li>
+                <li><a href="../index.html#contacts">Контакты</a></li>
             </ul>
         </div>
         <div class="site-footer__right">
-            <p class="site-footer__copy">
-                © <span id="js-year">2025</span> Поволжский центр беспилотной авиации
-            </p>
-            <p class="site-footer__disclaimer">
-                Сайт не является публичной офертой и носит информационный характер.
-            </p>
+            <p class="site-footer__copy">© <span id="js-year">2025</span> Поволжский центр беспилотной авиации</p>
+            <p class="site-footer__disclaimer">Сайт не является публичной офертой и носит информационный характер.</p>
         </div>
     </div>
 
     <script defer src="../assets/js/app.js"></script>
 </footer>
-<script src="../../../Downloads/site_restructured/assets/js/app.js"></script>
 </body>
 </html>
