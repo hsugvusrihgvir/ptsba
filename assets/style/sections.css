@@ -259,7 +259,7 @@
     width: 100%;
     max-width: none;
     height: clamp(260px, 26vw, 420px);
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
 
     background: #000;
@@ -429,4 +429,10 @@
 #contacts .section__media::before,
 #contacts .section__media::after {
     content: none !important;
+}
+
+.page-main .section__image-placeholder,
+.page .section__image-placeholder,
+body .section__image-placeholder {
+    border-radius: 10px !important;
 }

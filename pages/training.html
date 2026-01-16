@@ -334,77 +334,49 @@
     </section>
 
     <!-- СЕКЦИЯ: ЗАПИСАТЬСЯ (остаётся без изменений) -->
-    <section class="section training-signup" id="signup" aria-labelledby="signup-title">
-        <div class="section__inner section__inner--split">
-            <div>
-                <div class="section__header">
-                    <h2 class="section__title" id="signup-title">Записаться на обучение</h2>
-                    <p class="section__subtitle">
-                        Выберите удобный способ связи или заполните форму. Ответим на все вопросы по обучению.
+    <!-- Компактный блок с телефоном -->
+    <!-- Контакты -->
+    <section class="section">
+        <div class="section__inner container">
+            <div class="contacts">
+                <h3 class="section__title section__title--small">Контакты</h3>
+
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Телефон</h4>
+                    <p class="contacts__value">
+                        <a href="tel:+79179845875">+7 (980) 858-08-27</a><br>
+                        <a href="tel:+79179845875">+7 (917) 984-58-75</a>
                     </p>
                 </div>
 
-                <div class="training-grid-2">
-                    <div class="card tilt">
-                        <h3 class="card__title">На основной курс (3-5 дней)</h3>
-                        <p class="card__text">Заполните форму справа — мы свяжемся для уточнения деталей.</p>
-                        <a href="#form" class="card__link">Перейти к форме →</a>
-                    </div>
-                    <div class="card tilt">
-                        <h3 class="card__title">На социальный проект (бесплатно)</h3>
-                        <p class="card__text">Подайте заявку через специальную форму партнёров проекта.</p>
-                        <a href="https://goo.su/rhpqSzp" class="card__link" target="_blank" rel="noopener">Подать заявку на проект →</a>
-                    </div>
-                    <div class="card tilt">
-                        <h3 class="card__title">Telegram для вопросов</h3>
-                        <p class="card__text">Написать в Telegram-канал центра с любыми вопросами.</p>
-                        <a href="https://t.me/ptsbabalashov" class="card__link" target="_blank" rel="noopener">Открыть канал →</a>
-                    </div>
-                    <div class="card tilt">
-                        <h3 class="card__title">Телефон для связи</h3>
-                        <p class="card__text">Позвоните для быстрой консультации по обучению.</p>
-                        <a href="tel:+79179845875" class="card__link">+7 (917) 984-58-75 →</a>
-                    </div>
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Адрес</h4>
+                    <p class="contacts__value">
+                        Саратовская область, г. Балашов, улица Титова 21 Г
+                    </p>
                 </div>
-            </div>
 
-            <!-- Форма -->
-            <div class="section__media" id="form">
-                <form class="contact-form">
-                    <h3 class="contact-form__title">Заявка на основной курс обучения</h3>
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Мессенджеры</h4>
+                    <p class="contacts__value">
+                        Telegram для связи:
+                        <a href="https://t.me/+79063013555" target="_blank">
+                            написать
+                        </a>
+                        <br>
+                        Telegram-канал:
+                        <a href="https://t.me/ptsbabalashov" target="_blank">
+                            новости центра
+                        </a>
+                    </p>
+                </div>
 
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Ваше имя</span>
-                        <input type="text" name="name" required>
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Телефон</span>
-                        <input type="tel" name="phone" required>
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Город</span>
-                        <input type="text" name="city" placeholder="Откуда планируете приехать">
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Комментарий</span>
-                        <textarea name="message" rows="4" placeholder="Опыт (если есть), желаемые даты, вопросы"></textarea>
-                    </label>
-
-                    <label class="contact-form__checkbox">
-                        <input type="checkbox" name="agree" required>
-                        <span>
-                            Я даю согласие на обработку персональных данных и принимаю
-                            <a href="policy.html">Политику конфиденциальности</a>.
-                        </span>
-                    </label>
-
-                    <button type="submit" class="btn btn--primary contact-form__submit">
-                        Отправить заявку
-                    </button>
-                </form>
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Форма обратной связи</h4>
+                    <p class="contacts__value">
+                        <a href="../index.html#contacts">Оставить заявку →</a>
+                    </p>
+                </div>
             </div>
         </div>
     </section>

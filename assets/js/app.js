@@ -52,36 +52,145 @@
     }
 
     // -------------------------
-    // Active nav link on scroll
+    // Active nav link (page + anchors) — SINGLE SOURCE OF TRUTH
+    // IMPORTANT FIX:
+    // - apply .is-active BOTH to <a> and its parent <li.site-nav__item>
+    // so it matches whatever your CSS expects.
     // -------------------------
-    const sections = $$("section[id]");
-    const navLinks = $$(".site-nav__link");
+    (() => {
+        const navLinks = $$(".site-nav__link");
+        if (!navLinks.length) return;
 
-    if (sections.length && navLinks.length) {
-        const setActive = () => {
-            const y = window.scrollY + 120;
+        const normalizePath = (pathname) => {
+            // "/site/" => "/site/index.html"
+            if (pathname.endsWith("/")) return pathname + "index.html";
+            return pathname;
+        };
+
+        const currentPath = normalizePath(window.location.pathname);
+
+        const isIndexPath = () =>
+            currentPath.endsWith("/index.html") || currentPath === "index.html";
+
+        const setActiveEl = (a, on) => {
+            a.classList.toggle("is-active", on);
+            const li = a.closest(".site-nav__item");
+            if (li) li.classList.toggle("is-active", on);
+        };
+
+        const clearActive = () => {
+            navLinks.forEach((a) => setActiveEl(a, false));
+        };
+
+        // --- anchors in nav (only those starting with "#")
+        const anchorHrefs = navLinks
+            .map((a) => (a.getAttribute("href") || "").trim())
+            .filter((h) => h.startsWith("#"));
+
+        const anchorTargets = anchorHrefs
+            .map((h) => document.getElementById(h.slice(1)))
+            .filter(Boolean);
+
+        const setActiveByExactHref = (href) => {
+            clearActive();
+            navLinks.forEach((a) => {
+                const h = (a.getAttribute("href") || "").trim();
+                if (h === href) setActiveEl(a, true);
+            });
+        };
+
+        const setActiveByPage = () => {
+            clearActive();
+
+            navLinks.forEach((a) => {
+                const href = (a.getAttribute("href") || "").trim();
+                if (!href || href.startsWith("#")) return;
+
+                let url;
+                try {
+                    url = new URL(href, window.location.href);
+                } catch {
+                    return;
+                }
+
+                const targetPath = normalizePath(url.pathname);
+                if (targetPath === currentPath) {
+                    setActiveEl(a, true);
+                }
+            });
+        };
+
+        const updateAnchorByScroll = () => {
+            if (!isIndexPath()) return;
+
+            // Если якорей нет (или не нашли элемент) — просто подсветим страницу
+            if (!anchorTargets.length) {
+                setActiveByPage();
+                return;
+            }
+
+            const y = window.scrollY + 140;
             let currentId = "";
 
-            for (const s of sections) {
-                const top = s.offsetTop;
-                const height = s.offsetHeight;
+            for (const el of anchorTargets) {
+                const top = el.offsetTop;
+                const height = el.offsetHeight || 1;
                 if (y >= top && y < top + height) {
-                    currentId = s.id;
+                    currentId = el.id;
                     break;
                 }
             }
 
-            navLinks.forEach((a) => {
-                const href = a.getAttribute("href") || "";
-                const isActive = href === `#${currentId}`;
-                a.classList.toggle("is-active", isActive);
-            });
+            if (currentId) {
+                setActiveByExactHref(`#${currentId}`);
+            } else {
+                setActiveByPage();
+            }
         };
 
-        window.addEventListener("scroll", setActive, { passive: true });
-        window.addEventListener("resize", setActive);
-        setActive();
-    }
+        const updateByHash = () => {
+            if (!isIndexPath()) return;
+
+            const hash = window.location.hash || "";
+            if (!hash) return;
+
+            if (anchorHrefs.includes(hash)) {
+                setActiveByExactHref(hash);
+            }
+        };
+
+        const updateNavActive = () => {
+            if (isIndexPath()) {
+                // если сразу открыли с hash — подсветить
+                if (window.location.hash) updateByHash();
+
+                // затем поддерживать по скроллу
+                updateAnchorByScroll();
+            } else {
+                setActiveByPage();
+            }
+        };
+
+        // Events
+        window.addEventListener("hashchange", () => {
+            // hashchange может прийти раньше, чем браузер успеет проскроллить,
+            // поэтому даём шанс и hash, и scroll-логике.
+            updateByHash();
+            updateAnchorByScroll();
+        });
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                updateAnchorByScroll();
+            },
+            { passive: true }
+        );
+
+        window.addEventListener("resize", updateNavActive);
+
+        updateNavActive();
+    })();
 
     // -------------------------
     // Reveal on scroll
@@ -239,10 +348,6 @@
         const items = Array.from(document.querySelectorAll(".section__image-placeholder"));
         if (!items.length) return;
 
-        // эффекты активны ТОЛЬКО на первом «проходе вниз» после загрузки страницы.
-        // логика: пока пользователь скроллит вниз — показываем лёгкий hover-like.
-        // как только он впервые начал скроллить ВВЕРХ (после того как уже пролистал вниз),
-        // эффекты выключаются до перезагрузки.
         document.body.classList.add("is-first-visit");
 
         const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -255,16 +360,15 @@
             const viewCenter = vh / 2;
 
             const dist = Math.abs(elCenter - viewCenter);
-            const norm = 1 - dist / (vh * 0.55); // зона действия
+            const norm = 1 - dist / (vh * 0.55);
             return clamp01(norm);
         };
 
         let raf = 0;
         let disabled = false;
 
-        // следим за направлением скролла
         let maxY = window.scrollY || 0;
-        let armed = false; // «вооружаемся» после первого заметного скролла вниз
+        let armed = false;
 
         const disable = () => {
             if (disabled) return;
@@ -275,7 +379,6 @@
                 el.style.setProperty("--m-peek", "0");
                 el.style.setProperty("--par", "0.5");
             }
-
 
             window.removeEventListener("scroll", onScroll, { passive: true });
             window.removeEventListener("resize", onScroll);
@@ -291,20 +394,17 @@
                 const peek = computePeek(el);
                 el.style.setProperty("--m-peek", peek.toFixed(3));
 
-                // 1) Пока элемент "не зафиксирован" — даём ему лёгкий наклон/сдвиг от позиции
                 if (!el.dataset.parLocked) {
                     const r = el.getBoundingClientRect();
-                    const t = (r.top + r.height / 2) / vh;     // 0..1..2
-                    const par = clamp01(t);                   // 0..1
+                    const t = (r.top + r.height / 2) / vh;
+                    const par = clamp01(t);
                     el.style.setProperty("--par", par.toFixed(3));
 
-                    // 2) Как только он достаточно "в зоне внимания" — фиксируем ровно (параллельно)
                     if (peek > 0.62) {
                         el.dataset.parLocked = "1";
                         el.style.setProperty("--par", "0.5");
                     }
                 } else {
-                    // уже зафиксирован — держим ровно
                     el.style.setProperty("--par", "0.5");
                 }
             }
@@ -315,12 +415,10 @@
 
             const y = window.scrollY || 0;
 
-            // вниз
             if (y >= maxY) {
                 maxY = y;
-                if (maxY > 120) armed = true; // порог, чтобы не срабатывало на микро-скролл
+                if (maxY > 120) armed = true;
             } else {
-                // вверх: если уже был проход вниз — выключаем эффекты
                 if (armed && (maxY - y) > 10) {
                     disable();
                     return;
@@ -331,7 +429,6 @@
             raf = requestAnimationFrame(apply);
         };
 
-        // старт
         apply();
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);

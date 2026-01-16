@@ -425,94 +425,48 @@
     </section>
 
     <!-- ЗАЯВКА НА РЕМОНТ -->
-    <section class="section repair-request" id="request" aria-labelledby="request-title">
-        <div class="section__inner section__inner--split">
-            <div>
-                <div class="section__header">
-                    <h2 class="section__title" id="request-title">Оставить заявку на ремонт</h2>
-                    <p class="section__subtitle">
-                        Опишите проблему с вашим агродроном — мы свяжемся с вами для уточнения деталей и расчёта стоимости.
+    <section class="section">
+        <div class="section__inner container">
+            <div class="contacts">
+                <h3 class="section__title section__title--small">Контакты</h3>
+
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Телефон</h4>
+                    <p class="contacts__value">
+                        <a href="tel:+79179845875">+7 (980) 858-08-27</a><br>
+                        <a href="tel:+79179845875">+7 (917) 984-58-75</a>
                     </p>
                 </div>
 
-                <div class="repair-grid-2">
-                    <div class="card tilt">
-                        <h3 class="card__title">Позвонить</h3>
-                        <p class="card__text">Быстро описать проблему по телефону и получить предварительную консультацию.</p>
-                        <div class="repair-phone-numbers">
-                            <a class="repair-phone" href="tel:+79179845875">+7 (917) 984-58-75</a>
-                            <a class="repair-phone" href="tel:+79376336529">+7 (937) 633-65-29</a>
-                        </div>
-                    </div>
-                    <div class="card tilt">
-                        <h3 class="card__title">Telegram для связи</h3>
-                        <p class="card__text">Написать в Telegram — можно отправить фото/видео проблемы.</p>
-                        <a class="card__link" href="https://t.me/+79063013555" target="_blank" rel="noopener">
-                            Написать в Telegram →
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Адрес</h4>
+                    <p class="contacts__value">
+                        Саратовская область, г. Балашов, улица Титова 21 Г
+                    </p>
+                </div>
+
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Мессенджеры</h4>
+                    <p class="contacts__value">
+                        Telegram для связи:
+                        <a href="https://t.me/+79063013555" target="_blank">
+                            написать
                         </a>
-                    </div>
+                        <br>
+                        Telegram-канал:
+                        <a href="https://t.me/ptsbabalashov" target="_blank">
+                            новости центра
+                        </a>
+                    </p>
                 </div>
 
-                <div class="repair-note">
-                    <p class="repair-note__title">Что подготовить перед обращением</p>
-                    <ul class="repair-bullets">
-                        <li>Модель и марка агродрона</li>
-                        <li>Описание проблемы (что произошло, при каких условиях)</li>
-                        <li>Фото/видео повреждений (если есть)</li>
-                        <li>Приблизительный срок эксплуатации</li>
-                    </ul>
+                <div class="contacts__item">
+                    <h4 class="contacts__label">Форма обратной связи</h4>
+                    <p class="contacts__value">
+                        Чтобы оставить заявку, перейдите на
+                        <a href="../index.html#contacts">главную страницу →</a>
+                    </p>
                 </div>
-            </div>
-
-            <!-- ФОРМА -->
-            <div class="section__media">
-                <form class="contact-form">
-                    <h3 class="contact-form__title">Заявка на ремонт</h3>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Ваше имя</span>
-                        <input type="text" name="name" required>
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Телефон</span>
-                        <input type="tel" name="phone" required>
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Модель агродрона</span>
-                        <input type="text" name="model" placeholder="Например: DJI Agras T30, Геоскан и т.д.">
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Тип проблемы</span>
-                        <select name="problem_type">
-                            <option value="mechanical">Механические повреждения (падение, удар)</option>
-                            <option value="electronics">Проблемы с электроникой</option>
-                            <option value="battery">Проблемы с батареей</option>
-                            <option value="spraying">Неисправность системы внесения СЗР</option>
-                            <option value="software">Программные сбои</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </label>
-
-                    <label class="contact-form__field">
-                        <span class="contact-form__label">Описание проблемы</span>
-                        <textarea name="message" rows="4" placeholder="Подробно опишите, что случилось, при каких условиях, какие симптомы..."></textarea>
-                    </label>
-
-                    <label class="contact-form__checkbox">
-                        <input type="checkbox" name="agree" required>
-                        <span>
-                            Я даю согласие на обработку персональных данных и принимаю
-                            <a href="policy.html">Политику конфиденциальности</a>.
-                        </span>
-                    </label>
-
-                    <button type="submit" class="btn btn--primary contact-form__submit">
-                        Отправить заявку
-                    </button>
-                </form>
             </div>
         </div>
     </section>
