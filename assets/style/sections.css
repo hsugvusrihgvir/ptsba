@@ -1,4 +1,4 @@
-﻿/* ОБЩИЕ СЕКЦИИ */
+/* ОБЩИЕ СЕКЦИИ */
 
 .section {
     padding-block: var(--section-padding-y);
@@ -26,7 +26,7 @@
 .section__inner--split {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
@@ -37,6 +37,29 @@
 .section__title {
     font-size: clamp(1.6rem, 2vw, 2.1rem);
     line-height: 1.3;
+}
+
+/* Лёгкий акцент для заголовков секций (в фирменном градиенте) */
+.section__title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.35rem;
+}
+
+.section__title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: clamp(120px, 14vw, 220px);
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(
+            90deg,
+            var(--nav-underline-start),
+            var(--nav-underline-end)
+    );
+    opacity: 0.55;
 }
 
 .section__subtitle {
@@ -69,13 +92,10 @@
     margin-top: 1rem;
 }
 
-
-
 @media (max-width: 640px) {
     .section {
         padding-block: 2.2rem;
     }
-
 
     .section__title {
         font-size: 1.2rem;
@@ -117,7 +137,6 @@
 .card__link {
     font-size: 0.9rem;
 }
-
 
 .trust-block {
     padding: 1rem 1.1rem;
@@ -226,27 +245,23 @@
     align-self: flex-start;
 }
 
-.section__inner--split {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 2.5rem;
-    align-items: center;
-}
+/* MEDIA (фото) — растягиваем и убираем круглые углы, эффекты оставляем */
 
 .section__media {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
 }
 
-/* Рамка для фото */
+/* контейнер картинки: шире + прямые углы */
 .section__image-placeholder {
-    width: min(100%, 520px);
-    height: clamp(240px, 28vw, 320px);
-    border-radius: 24px;
+    width: 100%;
+    max-width: none;
+    height: clamp(260px, 26vw, 420px);
+    border-radius: 12px;
     overflow: hidden;
 
-    box-shadow: var(--card-shadow);
     background: #000;
 }
 
@@ -255,6 +270,18 @@
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+@media (min-width: 1280px) {
+    .section__image-placeholder {
+        height: clamp(320px, 22vw, 460px);
+    }
+}
+
+@media (min-width: 1600px) {
+    .section__image-placeholder {
+        height: clamp(360px, 20vw, 520px);
+    }
 }
 
 @media (max-width: 960px) {
@@ -270,8 +297,8 @@
 
     .section__image-placeholder {
         width: 100%;
-        height: clamp(220px, 45vw, 280px);
-        border-radius: 20px;
+        height: clamp(220px, 45vw, 320px);
+        border-radius: 0;
     }
 }
 
@@ -279,4 +306,133 @@
     .section__inner--split {
         gap: 1.4rem;
     }
+}
+
+/* =========================
+   Effects (оставляем!)
+   ========================= */
+
+.section[data-parallax="services"]::before,
+.section[data-parallax="services"]::after {
+    content: none !important;
+}
+
+/* Эффекты теперь вешаем на placeholder (чтобы не конфликтовать с layout) */
+.section__image-placeholder {
+    position: relative;
+
+    border: none !important;
+    outline: none !important;
+
+    /* прямые углы */
+    border-radius: 0;
+    overflow: hidden;
+
+    /* мягкая дорогая тень */
+    box-shadow:
+            0 18px 50px rgba(15, 23, 42, 0.14),
+            0 2px 10px rgba(15, 23, 42, 0.06);
+
+    /* scroll effect (из JS придёт --par) */
+    transform:
+            perspective(1200px)
+            rotateZ(calc((var(--par, 0.5) - 0.5) * 2.4deg))
+            translateY(calc((0.5 - var(--par, 0.5)) * 10px));
+    transition: transform 0.18s ease;
+    will-change: transform;
+}
+
+.section__image-placeholder picture,
+.section__image-placeholder img {
+    display: block;
+    width: 100%;
+}
+
+.section__image-placeholder img {
+    transform: scale(1.01);
+    transition: transform 0.35s ease, filter 0.35s ease;
+    filter: contrast(1.03) saturate(1.06);
+}
+
+.section__image-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+            radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.14), transparent 46%),
+            radial-gradient(circle at 50% 120%, rgba(0, 0, 0, 0.18), transparent 50%);
+    opacity: 1;
+}
+
+.section__image-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-25%, -30%, 0) rotate(12deg);
+    transition: opacity 0.22s ease, transform 0.35s ease;
+    background: linear-gradient(
+            120deg,
+            transparent 40%,
+            rgba(255,255,255,0.20) 50%,
+            transparent 60%
+    );
+}
+
+.section__image-placeholder:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(12deg);
+}
+
+.section__image-placeholder:hover img {
+    transform: scale(1.04);
+    filter: contrast(1.05) saturate(1.10);
+}
+
+/* =========================
+   MOBILE "hover-like" on scroll (FIRST VISIT ONLY)
+   Работает через CSS var --m-peek (0..1), которую ставит JS
+   ========================= */
+
+@media (hover: none) and (pointer: coarse) {
+    body.is-first-visit .section__image-placeholder::after {
+        opacity: calc(var(--m-peek, 0) * 0.55);
+        transform: translate3d(
+                calc((1 - var(--m-peek, 0)) * -14%),
+                calc((1 - var(--m-peek, 0)) * -16%),
+                0
+        ) rotate(12deg);
+        transition: opacity 0.08s linear, transform 0.08s linear;
+    }
+
+    body.is-first-visit .section__image-placeholder img {
+        transform: scale(calc(1.01 + var(--m-peek, 0) * 0.025));
+        filter:
+                contrast(calc(1.03 + var(--m-peek, 0) * 0.03))
+                saturate(calc(1.06 + var(--m-peek, 0) * 0.05));
+        transition: transform 0.08s linear, filter 0.08s linear;
+    }
+}
+
+/* контакты: у блока с формой эффекты не нужны */
+#contacts .section__media {
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    will-change: auto !important;
+}
+
+#contacts .section__media::before,
+#contacts .section__media::after {
+    content: none !important;
+}
+
+.page-main .section__image-placeholder,
+.page .section__image-placeholder,
+body .section__image-placeholder {
+    border-radius: 10px !important;
 }

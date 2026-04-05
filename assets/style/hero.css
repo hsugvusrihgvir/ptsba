@@ -1,4 +1,4 @@
-﻿/*  HERO */
+/*  HERO */
 
 .hero {
     padding-block: 0rem 3rem;
@@ -27,6 +27,88 @@
     background-position: right center;
 }
 
+
+
+/* Декоративные акценты (без видео, лёгкие по производительности) */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* едва заметная "техно-сетка" */
+    background-image:
+            linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -180px;
+    width: 520px;
+    height: 520px;
+    pointer-events: none;
+
+    background: radial-gradient(
+            circle,
+            rgba(43, 135, 90, 0.18),
+            transparent 70%
+    );
+    filter: blur(44px);
+    opacity: 0.95;
+}
+
+/* Слой контента поверх декоративных фонов */
+.hero__inner,
+.hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Блок в hero — чуть более "дорогой" контраст */
+.hero__content {
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+/* Факты в hero — как "чипсы" вместо списка */
+.hero__facts {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.hero__facts li {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+    font-size: 0.9rem;
+}
+
+/* На маленьких экранах уменьшаем декоративную сетку */
+@media (max-width: 640px) {
+    .hero::before {
+        background-size: 64px 64px;
+        opacity: 0.22;
+    }
+
+    .hero::after {
+        width: 380px;
+        height: 380px;
+        top: -120px;
+        right: -200px;
+        filter: blur(40px);
+    }
+}
 /* фон для разных ширин */
 
 @media (max-width: 2000px) {
@@ -155,7 +237,6 @@
 
 .hero__subtitle {
     font-size: clamp(1.1rem, 1.4vw, 1.5rem);
-    color: var(--text-soft);
     margin-bottom: 1rem;
 }
 
@@ -254,4 +335,64 @@
         flex-direction: column;
         align-items: stretch;
     }
+}
+
+/* =========================
+   Moved from main.css (cleanup)
+   ========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    z-index: 0;
+    pointer-events: none;
+
+    transform: translate3d(0, calc((var(--par, 0) - 0.5) * 34px), 0);
+
+    filter: blur(12px);
+    opacity: 0.95;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    background-size: 260px 260px;
+}
+
+.hero__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.hero__inner :is(.hero__content, .hero__card, .hero__panel, .hero__box, .hero__wrap) {
+    position: relative;
+    isolation: isolate;
+    animation: hero-card-float 7s ease-in-out infinite;
+}
+
+.hero__inner :is(.hero__content, .hero__card, .hero__panel, .hero__box, .hero__wrap)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    background: radial-gradient(circle at 18% 22%, rgba(37,99,235,0.14), transparent 48%);
+}
+
+.hero__inner :is(.hero__content, .hero__card, .hero__panel, .hero__box, .hero__wrap):hover::after {
+    opacity: 1;
 }

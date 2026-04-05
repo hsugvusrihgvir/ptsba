@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -47,12 +47,14 @@
                 ☰
             </button>
             <ul class="site-nav__list">
-                <li class="site-nav__item"><a href="#training" class="site-nav__link">Обучение</a></li>
-                <li class="site-nav__item"><a href="#services" class="site-nav__link">Услуги агродронов</a></li>
-                <li class="site-nav__item"><a href="#repair" class="site-nav__link">Ремонт</a></li>
-                <li class="site-nav__item"><a href="#project-souls" class="site-nav__link">Соцпроект</a></li>
-                <li class="site-nav__item"><a href="#cases" class="site-nav__link">Кейсы</a></li>
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
                 <li class="site-nav__item"><a href="#contacts" class="site-nav__link">Контакты</a></li>
+                <li class="site-nav__item"><a href="pages/training.html" class="site-nav__link">Обучение</a></li>
+                <li class="site-nav__item"><a href="pages/services.html" class="site-nav__link">Услуги агродронов</a></li>
+                <li class="site-nav__item"><a href="pages/repair.html" class="site-nav__link">Ремонт</a></li>
+                <li class="site-nav__item"><a href="pages/news.html" class="site-nav__link">Новости</a></li>
+                <li class="site-nav__item"><a href="pages/info.html" class="site-nav__link">Информация</a></li>
+
             </ul>
         </nav>
     </div>
@@ -85,22 +87,22 @@
     </section>
 
     <!-- Сервис -->
-    <section class="section section--light">
+    <section class="section section--light"  data-parallax="services">
         <div class="section__inner container">
             <header class="section__header">
                 <h2 class="section__title">Чем мы занимаемся</h2>
             </header>
 
             <div class="grid grid--3">
+
                 <article class="card card--service">
                     <h3 class="card__title">Обучение пилотов агродронов</h3>
                     <p class="card__text">
-                        Подготовка внешних пилотов с практикой на реальных полях и выдачей документов установленного образца.
+                        Подготовка внешних пилотов с практикой на реальных полях и выдачей свидетельства внешнего пилота сельскохозяйственной беспилотной авиационной системы.
                     </p>
                     <ul class="card__list">
-                        <li>Теория и практика полётов</li>
-                        <li>Работа с ПО и картами</li>
-                        <li>Экзамен и сопровождение</li>
+                        <li>Теория, безопасность и регламенты</li>
+                        <li>Практические вылеты и отработка навыков</li>
                     </ul>
                     <a href="#training" class="card__link">Подробнее об обучении →</a>
                 </article>
@@ -108,7 +110,7 @@
                 <article class="card card--service">
                     <h3 class="card__title">Обработка полей агродронами</h3>
                     <p class="card__text">
-                        Внесение СЗР и аэросев с точным дозированием и минимальной нагрузкой на почву.
+                        Внесение СЗР и аэросев с точным дозированием и минимальной нагрузкой на почву с использованием агродронов.
                     </p>
                     <ul class="card__list">
                         <li>Поля, сады, виноградники</li>
@@ -121,12 +123,13 @@
                 <article class="card card--service">
                     <h3 class="card__title">Ремонт и сервис агродронов</h3>
                     <p class="card__text">
-                        Диагностика, ремонт и плановое обслуживание агродронов с гарантией на выполненные работы.
+                        Ремонт агродронов любой сложности, в том числе восстановление полётных батарей.
+                        Диагностика, ремонт и сервис с гарантией.
                     </p>
                     <ul class="card__list">
-                        <li>Диагностика и восстановление</li>
-                        <li>Работа с популярными моделями</li>
-                        <li>Гарантия на ремонт</li>
+                        <li>Диагностика (по возможности — бесплатно)</li>
+                        <li>Быстрый ремонт и настройка</li>
+                        <li>Гарантия на выполненные работы</li>
                     </ul>
                     <a href="#repair" class="card__link">Подробнее о ремонте →</a>
                 </article>
@@ -141,12 +144,12 @@
                 <div class="section__image-placeholder">
                     <picture class="section__image">
                         <source
-                                srcset="assets/img/photo/im1.jpg"
+                                srcset="assets/img/photo/training/t3.JPG"
                                 sizes="(max-width: 960px) 100vw, 42vw">
 
                         <img
-                                src="assets/img/photo/im1.jpg"
-                                alt="Фото обучения"
+                                src="assets/img/photo/training/t3.JPG"
+                                alt="Обучение пилотов агродронов"
                                 loading="lazy"
                                 width="700"
                                 height="430">
@@ -159,12 +162,12 @@
                     Подготовим вас к работе с агродронами: от теории и техники безопасности до практических вылетов.
                 </p>
                 <ul class="section__list">
-                    <li>Сочетание теории и практики на учебном полигоне</li>
+                    <li>Сочетание теории и практики на учебном аэродроме</li>
                     <li>Освоение планирования полётов и настройки маршрутов</li>
                     <li>Подготовка к получению свидетельства внешнего пилота</li>
                 </ul>
                 <div class="section__actions">
-                    <a href="/training.html" class="btn btn--primary">Подробно об обучении...</a>
+                    <a href="pages/training.html" class="btn btn--primary">Подробно об обучении...</a>
                     <a href="#contacts" class="btn btn--outline">Задать вопрос по обучению</a>
                 </div>
             </div>
@@ -175,34 +178,34 @@
     <section class="section" id="services">
         <div class="section__inner container section__inner--split">
             <div class="section__content">
-                <h2 class="section__title">Обработка полей, садов и виноградников агродронами</h2>
+                <h2 class="section__title">Оказание услуг по внесению средств защиты растений и аэросев</h2>
                 <p class="section__subtitle">
-                    Помогаем хозяйствам внедрять технологии точного земледелия с использованием агродронов.
+                    Выполняем внесение средств защиты растений и аэросев с использованием агродронов.
+                    Подберём формат работ под задачу и сроки хозяйства.
                 </p>
 
                 <h3 class="section__label">Преимущества</h3>
                 <ul class="section__list">
-                    <li>Высокая эффективность. Равномерное распределение средств защиты растений обеспечивает максимальную защиту культур от вредителей и болезней</li>
-                    <li>Экономия времени и ресурсов. Беспилотные агродроны позволяют осуществлять обработку полей быстро и эффективно, сокращая затраты на топливо и ресурсы</li>
+                    <li>Равномерное внесение и контроль качества выполнения работ</li>
+                    <li>Оперативный выезд и выполнение работ в оптимальные сроки</li>
                 </ul>
 
 
                 <div class="section__actions">
                     <a href="#contacts" class="btn btn--primary">Оставить заявку</a>
-                    <a href="/services.html" class="btn btn--ghost">Подробнее...</a>
+                    <a href="pages/services.html" class="btn btn--ghost">Подробнее...</a>
                 </div>
             </div>
             <div class="section__media">
                 <div class="section__image-placeholder">
                     <picture class="section__image">
                         <source
-                                srcset="assets/img/photo/im3.jpg 700w,
-                                assets/img/photo/im3-700.jpg 1400w"
+                                srcset="assets/img/photo/services/s3.JPG"
                                 sizes="(max-width: 960px) 100vw, 42vw">
 
                         <img
-                                src="assets/img/photo/im3-700.jpg"
-                                alt="Фото обучения"
+                                src="assets/img/photo/services/s3.JPG"
+                                alt="Обработка полей агродроном"
                                 loading="lazy"
                                 width="700"
                                 height="430">
@@ -219,13 +222,12 @@
                 <div class="section__image-placeholder">
                     <picture class="section__image">
                         <source
-                                srcset="assets/img/photo/im2.jpg 700w,
-                                assets/img/photo/im2-700.jpg 1400w"
+                                srcset="assets/img/photo/repair/r4.JPG"
                                 sizes="(max-width: 960px) 100vw, 42vw">
 
                         <img
-                                src="assets/img/photo/im2-700.jpg"
-                                alt="Фото обучения"
+                                src="assets/img/photo/repair/r4.JPG"
+                                alt="Ремонт и сервис агродронов"
                                 loading="lazy"
                                 width="700"
                                 height="430">
@@ -235,27 +237,28 @@
             <div class="section__content">
                 <h2 class="section__title">Ремонт и сервис агродронов</h2>
                 <p class="section__subtitle">
-                    Принимаем агродроны на диагностику, ремонт и обслуживание. Работаем с ....
+                    Ремонт агродронов любой сложности, в том числе восстановление полётных батарей.
+                    Диагностика, быстрый ремонт и гарантия на работы.
                 </p>
 
                 <h3 class="section__label">Что мы ремонтируем</h3>
                 <ul class="section__list">
-                    <li>Пример 1</li>
-                    <li>Пример 2</li>
-                    <li>Пример 3</li>
+                    <li>Агродроны и узлы любой сложности</li>
+                    <li>Полётные батареи (восстановление и обслуживание)</li>
+                    <li>Силовую часть, электронику и системы внесения</li>
                 </ul>
 
                 <h3 class="section__label">Как мы работаем</h3>
                 <ol class="section__list section__list--ordered">
-                    <li>Вы описываете проблему и еще чета.</li>
-                    <li>Проводим диагностику и согласуем стоимость.</li>
-                    <li>Выполняем ремонт и что то еще делаем хз.</li>
-                    <li>И потом еще что то.</li>
+                    <li>Проводим диагностику (по возможности — бесплатно).</li>
+                    <li>Согласуем стоимость и сроки выполнения.</li>
+                    <li>Выполняем ремонт и проверку работоспособности.</li>
+                    <li>Передаём технику с гарантией на работы.</li>
                 </ol>
 
                 <div class="section__actions">
                     <a href="#contacts" class="btn btn--primary">Оставить заявку на ремонт</a>
-                    <a href="/repair.html" class="btn btn--ghost">Подробно о сервисе...</a>
+                    <a href="pages/repair.html" class="btn btn--ghost">Подробно о сервисе...</a>
                 </div>
             </div>
         </div>
@@ -267,13 +270,13 @@
             <div class="section__content">
                 <h2 class="section__title">Проект «Душевные люди беспилотной авиации»</h2>
                 <p class="section__subtitle">
-                    Социальная инициатива по поддержке людей с инвалидностью и ограниченными возможностями здоровья,
-                    которые хотят освоить профессию внешнего пилота.
+                    Социальный проект для желающих с ограничениями по здоровью от 18 лет — независимо от пола и уровня подготовки.
+                    Возможность пройти бесплатное обучение и получить новую профессию.
                 </p>
                 <ul class="section__list">
-                    <li>Бесплатное очное обучение с упором на практику и работу с реальным оборудованием</li>
-                    <li>Программа, разработанная специалистами отрасли</li>
-                    <li>По окончании курса — статус сертифицированного оператора сельскохозяйственных дронов и возможность трудоустройства</li>
+                    <li>Очное бесплатное обучение с упором на практику и работу с оборудованием</li>
+                    <li>Программа, разработанная совместно со специалистами отрасли</li>
+                    <li>Проект реализуется при поддержке Фонда президентских грантов</li>
                 </ul>
                 <div class="section__actions">
                     <a href="https://goo.su/6s7KTp" class="btn btn--primary" target="_blank" rel="noopener">
@@ -283,7 +286,18 @@
             </div>
             <div class="section__media">
                 <div class="section__image-placeholder">
-                    <span>Не нашла фотку</span>
+                    <picture class="section__image">
+                        <source
+                                srcset="assets/img/photo/training/t7.jpg"
+                                sizes="(max-width: 960px) 100vw, 42vw">
+
+                        <img
+                                src="assets/img/photo/training/t7.jpg"
+                                alt="Ремонт и сервис агродронов"
+                                loading="lazy"
+                                width="700"
+                                height="430">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -333,19 +347,17 @@
 
             <div class="grid grid--2">
                 <div class="trust-block">
-                    <h3 class="trust-block__title">Официальный учебный центр</h3>
+                    <h3 class="trust-block__title">Открытая информация и документы</h3>
                     <p class="trust-block__text">
-                        Мы работаем в правовом поле и соблюдаем требования к образовательной и производственной
-                        деятельности. Вся открытая информация и документы размещены на отдельной странице сайта.
+                        Работаем прозрачно и в правовом поле. Основные сведения и документы доступны на отдельной странице сайта.
                     </p>
-                    <a href="/info.html" class="trust-block__link">Открытая информация и документы →</a>
+                    <a href="pages/info.html" class="trust-block__link">Открытая информация и документы →</a>
                 </div>
 
                 <div class="trust-block">
-                    <h3 class="trust-block__title">Практика и реальный результат</h3>
+                    <h3 class="trust-block__title">Практика и понятный результат</h3>
                     <p class="trust-block__text">
-                        Обучение и услуги строятся вокруг практики: реальные поля, реальные задачи, реальный опыт
-                        работы с агродронами.
+                        В основе — практика: реальные задачи, отработка навыков и чёткие регламенты выполнения работ и обслуживания.
                     </p>
                 </div>
             </div>
@@ -358,38 +370,36 @@
             <div class="section__content">
                 <h2 class="section__title">Связаться с нами</h2>
                 <p class="section__subtitle">
-                    Расскажите, что вам нужно: обучение, обработка полей или ремонт дрона. Мы подберём решение.
+                    Напишите или позвоните: обучение, услуги внесения или ремонт. Ответим и уточним детали заявки.
                 </p>
 
                 <div class="contacts">
                     <div class="contacts__item">
                         <h3 class="contacts__label">Телефон</h3>
-                        <!-- ПОДСТАВЬ СВОИ НОМЕРА -->
                         <p class="contacts__value">
-                            <a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a><br>
-                            <a href="tel:+7YYYYYYYYYY">+7 (YYY) YYY-YY-YY</a>
-                        </p>
-                    </div>
-
-                    <div class="contacts__item">
-                        <h3 class="contacts__label">Электронная почта</h3>
-                        <p class="contacts__value">
-                            <a href="mailto:info@example.com">info@example.com</a>
+                            <a href="tel:+79179845875">+7 (980) 858-08-27</a><br>
+                            <a href="tel:+79179845875">+7 (917) 984-58-75</a>
                         </p>
                     </div>
 
                     <div class="contacts__item">
                         <h3 class="contacts__label">Адрес</h3>
                         <p class="contacts__value">
-                            Адрес учебного центра и площадки для полётов. <br>
-                            <!-- Подставь реальный адрес -->
+                            Саратовская область, г. Балашов, улица Титова 21 Г<br>
                         </p>
                     </div>
-
                     <div class="contacts__item">
                         <h3 class="contacts__label">Мессенджеры</h3>
                         <p class="contacts__value">
-                            Telegram / WhatsApp: <a href="#">ссылка на чат или бота</a>
+                            Telegram (для связи):
+                            <a href="https://t.me/ptsba_b" target="_blank" rel="noopener">
+                                написать в Telegram
+                            </a>
+                            <br>
+                            Telegram-канал:
+                            <a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">
+                                новости и объявления центра
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -410,19 +420,22 @@
                         <span class="contact-form__label">Что вас интересует?</span>
                         <select name="topic">
                             <option value="training">Обучение</option>
-                            <option value="services">Обработка полей</option>
-                            <option value="repair">Ремонт дрона</option>
-                            <option value="other">Другое</option>
+                            <option value="services">Внесение СЗР и аэросев</option>
+                            <option value="repair">Ремонт агродрона</option>
+                            <option value="other">Вопрос</option>
                         </select>
                     </label>
                     <label class="contact-form__field">
                         <span class="contact-form__label">Комментарий</span>
-                        <textarea name="message" rows="4"></textarea>
+                        <textarea name="message" rows="4" placeholder="Коротко опишите задачу: обучение / услуга / ремонт, сроки и детали"></textarea>
                     </label>
 
                     <label class="contact-form__checkbox">
                         <input type="checkbox" name="agree" required>
-                        <span>Я даю согласие на обработку персональных данных.</span>
+                        <span>
+                            Я даю согласие на обработку персональных данных и принимаю
+                            <a href="pages/policy.html">Политику конфиденциальности</a>.
+                        </span>
                     </label>
 
                     <button type="submit" class="btn btn--primary contact-form__submit">
@@ -448,37 +461,26 @@
         <div class="site-footer__middle">
             <ul class="site-footer__nav">
                 <li><a href="#top">Наверх</a></li>
-                <li><a href="/info.html">Открытая информация</a></li>
-                <li><a href="/policy.html">Политика конфиденциальности</a></li>
+                <li><a href="pages/info.html">Открытая информация</a></li>
+                <li><a href="pages/policy.html">Политика конфиденциальности</a></li>
+                <li>
+                    <a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">
+                        Telegram-канал центра
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="site-footer__right">
             <p class="site-footer__copy">
                 © <span id="js-year">2025</span> Поволжский центр беспилотной авиации
             </p>
+            <p class="site-footer__disclaimer">
+                Сайт не является публичной офертой и носит информационный характер.
+            </p>
         </div>
     </div>
 
-    <script>
-        // Обновление года в футере
-        (function () {
-            var y = new Date().getFullYear();
-            var el = document.getElementById('js-year');
-            if (el) el.textContent = y;
-        })();
-
-        // Простейший тоггл-меню для мобилок
-        (function () {
-            var toggle = document.querySelector('.site-nav__toggle');
-            var list = document.querySelector('.site-nav__list');
-            if (!toggle || !list) return;
-            toggle.addEventListener('click', function () {
-                var expanded = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', String(!expanded));
-                list.classList.toggle('site-nav__list--open');
-            });
-        })();
-    </script>
+    <script defer src="assets/js/app.js"></script>
 </footer>
 
 </body>
