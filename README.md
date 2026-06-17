@@ -9,3 +9,5 @@
 - `assets/` — стили, скрипты, изображения и иконки.
 - `docs/` — PDF-документы для раздела открытой информации.
 - `robots.txt` и `sitemap.xml` — файлы для поисковой индексации.
+
+https://hsugvusrihgvir.github.io/example_site/
