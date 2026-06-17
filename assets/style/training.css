@@ -338,6 +338,43 @@
     .training-media__mini {
         grid-template-columns: 1fr;
     }
+
+    .training-chips li {
+        font-size: 0.84rem;
+        padding: 0.28rem 0.55rem;
+    }
+
+    .training-quick__item,
+    .training-cta-bar,
+    .training-note,
+    .training-checklist li {
+        border-radius: 14px;
+    }
+
+    .training-quick__item,
+    .training-card__body,
+    .training-note,
+    .training-checklist li {
+        padding: 0.8rem 0.9rem;
+    }
+
+    .training-cta-bar {
+        padding: 0.85rem;
+    }
+
+    .training-cta-bar__title {
+        font-size: 1rem;
+    }
+
+    .training-cta-bar__sub,
+    .training-note__text,
+    .training-footnote {
+        font-size: 0.9rem;
+    }
+
+    .training-cta-bar__actions .btn {
+        width: 100%;
+    }
 }
 
 
@@ -431,7 +468,7 @@
 @media (max-width: 768px) {
     .social-project-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.2rem;
     }
     .media-frame--wide {
         aspect-ratio: 16 / 9; /* На мобильных делаем немного более квадратным */
@@ -500,5 +537,23 @@
     }
     .media-frame--stack {
         aspect-ratio: 16 / 9; /* На мобильных делаем более широкими */
+    }
+}
+
+@media (max-width: 640px) {
+    .social-project-card {
+        padding: 1rem;
+    }
+
+    .social-project-intro,
+    .social-project-features,
+    .social-project-details,
+    .social-project-audience {
+        margin-bottom: 1rem;
+    }
+
+    .media-frame--tall {
+        min-height: 0;
+        aspect-ratio: 4 / 5;
     }
 }

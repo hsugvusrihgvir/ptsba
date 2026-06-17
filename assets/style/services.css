@@ -219,4 +219,39 @@
     .services-media__mini {
         grid-template-columns: 1fr;
     }
+
+    .services-chips li {
+        font-size: 0.84rem;
+        padding: 0.28rem 0.55rem;
+    }
+
+    .services-contacts {
+        gap: 0.55rem;
+    }
+
+    .services-contacts__item,
+    .services-cta-bar {
+        border-radius: 14px;
+    }
+
+    .services-contacts__item {
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .services-cta-bar {
+        padding: 0.85rem;
+    }
+
+    .services-cta-bar__title {
+        font-size: 1rem;
+    }
+
+    .services-cta-bar__sub {
+        font-size: 0.9rem;
+    }
+
+    .services-cta-bar__actions .btn {
+        width: 100%;
+    }
 }

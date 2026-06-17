@@ -1,4 +1,4 @@
-/* ОБЩИЕ СЕКЦИИ */
+﻿/* РћР‘Р©РР• РЎР•РљР¦РР */
 
 .section {
     padding-block: var(--section-padding-y);
@@ -13,8 +13,13 @@
     background: var(--section-bg-accent);
 }
 
+.section--trust {
+    background: #ffffff;
+}
+
 .section--contacts {
-    background: var(--section-bg-soft);
+    background: #eef4f8;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .section__inner {
@@ -39,7 +44,7 @@
     line-height: 1.3;
 }
 
-/* Лёгкий акцент для заголовков секций (в фирменном градиенте) */
+/* Р›С‘РіРєРёР№ Р°РєС†РµРЅС‚ РґР»СЏ Р·Р°РіРѕР»РѕРІРєРѕРІ СЃРµРєС†РёР№ (РІ С„РёСЂРјРµРЅРЅРѕРј РіСЂР°РґРёРµРЅС‚Рµ) */
 .section__title {
     position: relative;
     display: inline-block;
@@ -107,7 +112,7 @@
     }
 }
 
-/* КАРТОЧКИ  */
+/* РљРђР РўРћР§РљР  */
 
 .card {
     background: var(--card-bg);
@@ -138,16 +143,20 @@
     font-size: 0.9rem;
 }
 
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+}
+
 .trust-block {
-    padding: 1rem 1.1rem;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    padding-top: 1.05rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.12);
 }
 
 .trust-block__title {
-    margin: 0 0 0.45rem;
-    font-size: 1rem;
+    margin: 0 0 0.55rem;
+    font-size: 1.02rem;
 }
 
 .trust-block__text {
@@ -158,11 +167,12 @@
 
 .trust-block__link {
     display: inline-flex;
-    margin-top: 0.5rem;
+    margin-top: 0.65rem;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
-/* КОНТАКТЫ*/
+/* РљРћРќРўРђРљРўР«*/
 
 .contacts {
     display: grid;
@@ -184,68 +194,95 @@
     color: var(--text-soft);
 }
 
-/* Форма */
-
-.contact-form {
-    padding: 1.2rem 1.3rem;
-    border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+.contact-section__header {
+    margin-bottom: 1.8rem;
 }
 
-.contact-form__title {
-    margin: 0 0 0.3rem;
-    font-size: 1.05rem;
+.contact-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 1.1fr) minmax(240px, 0.9fr);
+    gap: 0;
+    align-items: start;
+    border-top: 1px solid rgba(15, 23, 42, 0.12);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
-.contact-form__field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.9rem;
+.contact-item {
+    min-height: 100%;
+    padding: 1.1rem 1.25rem 1.15rem 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
-.contact-form__label {
-    font-weight: 500;
+.contact-item:nth-child(1),
+.contact-item:nth-child(2) {
+    border-top: 0;
 }
 
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-    font-family: inherit;
-    font-size: 0.9rem;
-    padding: 0.45rem 0.6rem;
-    border-radius: 10px;
-    border: 1px solid rgba(148, 163, 184, 0.8);
-    background: #ffffff;
+.contact-item:nth-child(odd) {
+    padding-right: 1.5rem;
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
 }
 
-.contact-form textarea {
-    resize: vertical;
-    min-height: 90px;
+.contact-item:nth-child(even) {
+    padding-left: 1.5rem;
+    padding-right: 0;
 }
 
-.contact-form__checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.45rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+.contact-item__label {
+    margin: 0 0 0.55rem;
+    color: var(--text-main);
+    font-size: 1rem;
 }
 
-.contact-form__checkbox input {
-    margin-top: 0.1rem;
+.contact-item__links {
+    display: grid;
+    gap: 0.5rem;
 }
 
-.contact-form__submit {
-    margin-top: 0.4rem;
-    align-self: flex-start;
+.contact-phone {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--link-hover-color);
+    font-size: clamp(1.05rem, 1.6vw, 1.24rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-decoration: none;
 }
 
-/* MEDIA (фото) — растягиваем и убираем круглые углы, эффекты оставляем */
+.contact-phone:hover,
+.contact-link:hover,
+.contact-channel:hover {
+    color: var(--link-color);
+}
+
+.contact-link,
+.contact-channel {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--link-hover-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-channel {
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--btn-radius);
+    background: #229ed9;
+    color: #ffffff;
+    font-size: 0.92rem;
+}
+
+.contact-channel:hover {
+    background: #178ac0;
+    color: #ffffff;
+}
+
+.contact-item__text {
+    margin: 0;
+    color: var(--text-soft);
+}
+
+/* MEDIA (С„РѕС‚Рѕ) вЂ” СЂР°СЃС‚СЏРіРёРІР°РµРј Рё СѓР±РёСЂР°РµРј РєСЂСѓРіР»С‹Рµ СѓРіР»С‹, СЌС„С„РµРєС‚С‹ РѕСЃС‚Р°РІР»СЏРµРј */
 
 .section__media {
     display: flex;
@@ -254,7 +291,7 @@
     width: 100%;
 }
 
-/* контейнер картинки: шире + прямые углы */
+/* РєРѕРЅС‚РµР№РЅРµСЂ РєР°СЂС‚РёРЅРєРё: С€РёСЂРµ + РїСЂСЏРјС‹Рµ СѓРіР»С‹ */
 .section__image-placeholder {
     width: 100%;
     max-width: none;
@@ -300,16 +337,103 @@
         height: clamp(220px, 45vw, 320px);
         border-radius: 0;
     }
+
+    .trust-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-item--phones,
+    .contact-item--address {
+        grid-column: auto;
+        grid-row: auto;
+    }
 }
 
 @media (max-width: 640px) {
+    .section {
+        padding-block: 1.9rem;
+    }
+
     .section__inner--split {
         gap: 1.4rem;
+    }
+
+    .section__header {
+        margin-bottom: 1.1rem;
+    }
+
+    .card {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .contact-section__header {
+        margin-bottom: 1.15rem;
+    }
+
+    .contact-section .section__subtitle {
+        max-width: 100%;
+        font-size: 0.94rem;
+        line-height: 1.45;
+    }
+
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .contact-item,
+    .contact-item:nth-child(odd),
+    .contact-item:nth-child(even) {
+        padding: 0.78rem 0;
+        border-right: 0;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .contact-item:first-child {
+        border-top: 0;
+    }
+
+    .contact-item__label {
+        margin-bottom: 0.38rem;
+        font-size: 0.95rem;
+    }
+
+    .contact-item__links {
+        gap: 0.3rem;
+    }
+
+    .contact-phone {
+        font-size: 1rem;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-link,
+    .contact-channel,
+    .contact-item__text {
+        font-size: 0.94rem;
+    }
+
+    .contact-channel {
+        max-width: 100%;
+        padding: 0.45rem 0.78rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .contact-item__text {
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 }
 
 /* =========================
-   Effects (оставляем!)
+   Effects (РѕСЃС‚Р°РІР»СЏРµРј!)
    ========================= */
 
 .section[data-parallax="services"]::before,
@@ -317,23 +441,23 @@
     content: none !important;
 }
 
-/* Эффекты теперь вешаем на placeholder (чтобы не конфликтовать с layout) */
+/* Р­С„С„РµРєС‚С‹ С‚РµРїРµСЂСЊ РІРµС€Р°РµРј РЅР° placeholder (С‡С‚РѕР±С‹ РЅРµ РєРѕРЅС„Р»РёРєС‚РѕРІР°С‚СЊ СЃ layout) */
 .section__image-placeholder {
     position: relative;
 
     border: none !important;
     outline: none !important;
 
-    /* прямые углы */
+    /* РїСЂСЏРјС‹Рµ СѓРіР»С‹ */
     border-radius: 0;
     overflow: hidden;
 
-    /* мягкая дорогая тень */
+    /* РјСЏРіРєР°СЏ РґРѕСЂРѕРіР°СЏ С‚РµРЅСЊ */
     box-shadow:
             0 18px 50px rgba(15, 23, 42, 0.14),
             0 2px 10px rgba(15, 23, 42, 0.06);
 
-    /* scroll effect (из JS придёт --par) */
+    /* scroll effect (РёР· JS РїСЂРёРґС‘С‚ --par) */
     transform:
             perspective(1200px)
             rotateZ(calc((var(--par, 0.5) - 0.5) * 2.4deg))
@@ -393,7 +517,7 @@
 
 /* =========================
    MOBILE "hover-like" on scroll (FIRST VISIT ONLY)
-   Работает через CSS var --m-peek (0..1), которую ставит JS
+   Р Р°Р±РѕС‚Р°РµС‚ С‡РµСЂРµР· CSS var --m-peek (0..1), РєРѕС‚РѕСЂСѓСЋ СЃС‚Р°РІРёС‚ JS
    ========================= */
 
 @media (hover: none) and (pointer: coarse) {
@@ -414,21 +538,6 @@
                 saturate(calc(1.06 + var(--m-peek, 0) * 0.05));
         transition: transform 0.08s linear, filter 0.08s linear;
     }
-}
-
-/* контакты: у блока с формой эффекты не нужны */
-#contacts .section__media {
-    box-shadow: none !important;
-    background: transparent !important;
-    border: 0 !important;
-    overflow: visible !important;
-    transform: none !important;
-    will-change: auto !important;
-}
-
-#contacts .section__media::before,
-#contacts .section__media::after {
-    content: none !important;
 }
 
 .page-main .section__image-placeholder,

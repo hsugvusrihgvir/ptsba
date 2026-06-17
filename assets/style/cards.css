@@ -1,10 +1,10 @@
-/* Карточки услуг */
+﻿/* РљР°СЂС‚РѕС‡РєРё СѓСЃР»СѓРі */
 
 .card--service {
     position: relative;
     overflow: hidden;
 
-    border: 1px solid rgba(148, 163, 184, 0.35); /* мягкий контур */
+    border: 1px solid rgba(148, 163, 184, 0.35); /* РјСЏРіРєРёР№ РєРѕРЅС‚СѓСЂ */
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.05);
     padding: 1.4rem 1.5rem 1.5rem;
 
@@ -15,7 +15,7 @@
             background-color 0.18s ease;
 }
 
-/* Цветная полоска снизу как на навигации */
+/* Р¦РІРµС‚РЅР°СЏ РїРѕР»РѕСЃРєР° СЃРЅРёР·Сѓ РєР°Рє РЅР° РЅР°РІРёРіР°С†РёРё */
 
 .card--service::after {
     content: "";
@@ -32,7 +32,7 @@
     opacity: 0.6;
 }
 
-/* Лёгкий подсвет в углу */
+/* Р›С‘РіРєРёР№ РїРѕРґСЃРІРµС‚ РІ СѓРіР»Сѓ */
 
 .card--service::before {
     content: "";
@@ -48,7 +48,7 @@
 
 
 
-/* Маркер у заголовка для "живости" карточек */
+/* РњР°СЂРєРµСЂ Сѓ Р·Р°РіРѕР»РѕРІРєР° РґР»СЏ "Р¶РёРІРѕСЃС‚Рё" РєР°СЂС‚РѕС‡РµРє */
 .card--service .card__title::before {
     content: "";
     display: inline-block;
@@ -63,7 +63,7 @@
     );
     vertical-align: middle;
 }
-/* Ховер */
+/* РҐРѕРІРµСЂ */
 
 .card--service:hover,
 .card--service:focus-within {
@@ -102,48 +102,4 @@
 .card.tilt:hover::after,
 .trust-block.tilt:hover::after {
     opacity: 1;
-}
-
-.card:has(.contact-form),
-.trust-block:has(.contact-form) {
-    transform: none !important;
-}
-
-.card:has(.contact-form),
-.trust-block:has(.contact-form),
-.section__media:has(.contact-form) {
-    transform: none !important;
-    will-change: auto !important;
-}
-
-.card:has(.contact-form)::before,
-.card:has(.contact-form)::after,
-.trust-block:has(.contact-form)::before,
-.trust-block:has(.contact-form)::after {
-    content: none !important;
-}
-
-.card:has(.contact-form),
-.trust-block:has(.contact-form),
-.section__inner:has(.contact-form),
-.section:has(.contact-form) .section__inner {
-    box-shadow: none !important;
-    background: transparent !important;
-    border: none !important;
-}
-
-.card:has(.contact-form)::before,
-.card:has(.contact-form)::after,
-.trust-block:has(.contact-form)::before,
-.trust-block:has(.contact-form)::after,
-.section__inner:has(.contact-form)::before,
-.section__inner:has(.contact-form)::after {
-    content: none !important;
-}
-
-.card:has(.contact-form),
-.trust-block:has(.contact-form),
-.section__inner:has(.contact-form) {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
 }

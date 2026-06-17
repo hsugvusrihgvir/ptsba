@@ -19,15 +19,15 @@
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
     // -------------------------
-    // Header: sticky shadow on scroll
+    // Header shadow
     // -------------------------
     const header = $(".site-header");
-    const onHeaderScroll = () => {
+    const syncHeader = () => {
         if (!header) return;
         header.classList.toggle("is-scrolled", window.scrollY > 8);
     };
-    window.addEventListener("scroll", onHeaderScroll, { passive: true });
-    onHeaderScroll();
+    window.addEventListener("scroll", syncHeader, { passive: true });
+    syncHeader();
 
     // -------------------------
     // Mobile nav toggle
@@ -52,54 +52,51 @@
     }
 
     // -------------------------
-    // Active nav link (page + anchors) — SINGLE SOURCE OF TRUTH
-    // IMPORTANT FIX:
-    // - apply .is-active BOTH to <a> and its parent <li.site-nav__item>
-    // so it matches whatever your CSS expects.
+    // Active nav link
     // -------------------------
     (() => {
         const navLinks = $$(".site-nav__link");
         if (!navLinks.length) return;
 
-        const normalizePath = (pathname) => {
+        const cleanPath = (pathname) => {
             // "/site/" => "/site/index.html"
             if (pathname.endsWith("/")) return pathname + "index.html";
             return pathname;
         };
 
-        const currentPath = normalizePath(window.location.pathname);
+        const pagePath = cleanPath(window.location.pathname);
 
-        const isIndexPath = () =>
-            currentPath.endsWith("/index.html") || currentPath === "index.html";
+        const isHome = () =>
+            pagePath.endsWith("/index.html") || pagePath === "index.html";
 
-        const setActiveEl = (a, on) => {
+        const markLink = (a, on) => {
             a.classList.toggle("is-active", on);
             const li = a.closest(".site-nav__item");
             if (li) li.classList.toggle("is-active", on);
         };
 
         const clearActive = () => {
-            navLinks.forEach((a) => setActiveEl(a, false));
+            navLinks.forEach((a) => markLink(a, false));
         };
 
-        // --- anchors in nav (only those starting with "#")
-        const anchorHrefs = navLinks
+        // Anchors in nav
+        const hashes = navLinks
             .map((a) => (a.getAttribute("href") || "").trim())
             .filter((h) => h.startsWith("#"));
 
-        const anchorTargets = anchorHrefs
+        const sections = hashes
             .map((h) => document.getElementById(h.slice(1)))
             .filter(Boolean);
 
-        const setActiveByExactHref = (href) => {
+        const markHash = (href) => {
             clearActive();
             navLinks.forEach((a) => {
                 const h = (a.getAttribute("href") || "").trim();
-                if (h === href) setActiveEl(a, true);
+                if (h === href) markLink(a, true);
             });
         };
 
-        const setActiveByPage = () => {
+        const markPage = () => {
             clearActive();
 
             navLinks.forEach((a) => {
@@ -113,91 +110,101 @@
                     return;
                 }
 
-                const targetPath = normalizePath(url.pathname);
-                if (targetPath === currentPath) {
-                    setActiveEl(a, true);
+                const targetPath = cleanPath(url.pathname);
+                if (targetPath === pagePath) {
+                    markLink(a, true);
                 }
             });
         };
 
-        const updateAnchorByScroll = () => {
-            if (!isIndexPath()) return;
+        let sectionBounds = [];
 
-            // Если якорей нет (или не нашли элемент) — просто подсветим страницу
-            if (!anchorTargets.length) {
-                setActiveByPage();
+        const readSections = () => {
+            sectionBounds = sections.map((el) => ({
+                id: el.id,
+                top: el.offsetTop,
+                bottom: el.offsetTop + (el.offsetHeight || 1),
+            }));
+        };
+
+        const markOnScroll = () => {
+            if (!isHome()) return;
+
+            // Если якорей нет, подсвечиваем текущую страницу.
+            if (!sections.length) {
+                markPage();
                 return;
             }
 
             const y = window.scrollY + 140;
-            let currentId = "";
+            let activeId = "";
 
-            for (const el of anchorTargets) {
-                const top = el.offsetTop;
-                const height = el.offsetHeight || 1;
-                if (y >= top && y < top + height) {
-                    currentId = el.id;
+            for (const item of sectionBounds) {
+                if (y >= item.top && y < item.bottom) {
+                    activeId = item.id;
                     break;
                 }
             }
 
-            if (currentId) {
-                setActiveByExactHref(`#${currentId}`);
+            if (activeId) {
+                markHash(`#${activeId}`);
             } else {
-                setActiveByPage();
+                markPage();
             }
         };
 
-        const updateByHash = () => {
-            if (!isIndexPath()) return;
+        const markByHash = () => {
+            if (!isHome()) return;
 
             const hash = window.location.hash || "";
             if (!hash) return;
 
-            if (anchorHrefs.includes(hash)) {
-                setActiveByExactHref(hash);
+            if (hashes.includes(hash)) {
+                markHash(hash);
             }
         };
 
-        const updateNavActive = () => {
-            if (isIndexPath()) {
-                // если сразу открыли с hash — подсветить
-                if (window.location.hash) updateByHash();
+        const syncNav = () => {
+            readSections();
 
-                // затем поддерживать по скроллу
-                updateAnchorByScroll();
+            if (isHome()) {
+                // Если открыли сразу с hash, подсветим его.
+                if (window.location.hash) markByHash();
+
+                // Дальше поддерживаем подсветку по скроллу.
+                markOnScroll();
             } else {
-                setActiveByPage();
+                markPage();
             }
         };
 
-        // Events
         window.addEventListener("hashchange", () => {
-            // hashchange может прийти раньше, чем браузер успеет проскроллить,
-            // поэтому даём шанс и hash, и scroll-логике.
-            updateByHash();
-            updateAnchorByScroll();
+            markByHash();
+            markOnScroll();
         });
 
-        window.addEventListener(
-            "scroll",
-            () => {
-                updateAnchorByScroll();
-            },
-            { passive: true }
-        );
+        let navRaf = 0;
+        const queueNav = () => {
+            if (navRaf) return;
+            navRaf = requestAnimationFrame(() => {
+                navRaf = 0;
+                markOnScroll();
+            });
+        };
 
-        window.addEventListener("resize", updateNavActive);
+        window.addEventListener("scroll", queueNav, { passive: true });
+        window.addEventListener("resize", syncNav);
+        window.addEventListener("load", syncNav);
 
-        updateNavActive();
+        syncNav();
     })();
 
     // -------------------------
     // Reveal on scroll
     // -------------------------
-    const revealItems = $$(".js-reveal");
+    const reveals = $$(".js-reveal");
 
-    if (revealItems.length) {
+    if (reveals.length) {
         const io = new IntersectionObserver(
             (entries) => {
                 entries.forEach((e) => {
@@ -207,7 +214,7 @@
             { threshold: 0.12 }
         );
 
-        revealItems.forEach((el) => io.observe(el));
+        reveals.forEach((el) => io.observe(el));
     }
 
     // -------------------------
@@ -237,19 +244,19 @@
     // -------------------------
     // Footer year
     // -------------------------
-    const yearEl = $("#js-year");
-    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    const year = $("#js-year");
+    if (year) year.textContent = String(new Date().getFullYear());
 
     // =========================
     // MOBILE / PORTRAIT effects
     // =========================
     (() => {
-        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-        const isPortrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
-        if (!isTouch || !isPortrait) return;
+        const touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        const portrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+        if (!touch || !portrait) return;
 
-        // 1) scroll progress bar (CSS reads --m-progress)
-        const setProgress = () => {
+        // Mobile scroll progress
+        const setBar = () => {
             const doc = document.documentElement;
             const scrollTop = window.scrollY || doc.scrollTop || 0;
             const max = (doc.scrollHeight || 1) - (window.innerHeight || 1);
@@ -257,12 +264,12 @@
             doc.style.setProperty("--m-progress", `${p.toFixed(2)}%`);
         };
 
-        // 2) mobile reveal (use .m-reveal)
-        const mobReveal = $$(".m-reveal");
-        let mobIO = null;
+        // Mobile reveal
+        const mobileReveals = $$(".m-reveal");
+        let mobileIO = null;
 
-        if (mobReveal.length) {
-            mobIO = new IntersectionObserver(
+        if (mobileReveals.length) {
+            mobileIO = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((e) => {
                         if (e.isIntersecting) e.target.classList.add("is-visible");
@@ -270,37 +277,35 @@
                 },
                 { threshold: 0.14 }
             );
-            mobReveal.forEach((el) => mobIO.observe(el));
+            mobileReveals.forEach((el) => mobileIO.observe(el));
         }
 
-        // 3) micro parallax vars for hero + media (CSS reads --m-hero, --m-media, --m-rot)
-        const heroInner = $(".hero__inner");
-        const medias = $$(".section__media");
+        // Light mobile motion
+        const hero = $(".hero__inner");
+        const media = $$(".section__media");
 
-        const setParallax = () => {
+        const setMotion = () => {
             const y = window.scrollY || 0;
 
-            if (heroInner) {
-                // gentle
+            if (hero) {
                 const v = Math.max(-12, Math.min(18, y * 0.03));
                 document.documentElement.style.setProperty("--m-hero", `${v.toFixed(2)}px`);
             }
 
-            // apply to each media block
-            medias.forEach((m, idx) => {
-                const r = m.getBoundingClientRect();
+            media.forEach((el, idx) => {
+                const r = el.getBoundingClientRect();
                 const vh = window.innerHeight || 1;
-                const t = (r.top + r.height * 0.5) / vh; // 0..1..2
-                const offset = (0.5 - t) * 10; // px
-                const rot = (0.5 - t) * (idx % 2 ? -1 : 1) * 2; // deg
-                m.style.setProperty("--m-media", `${offset.toFixed(2)}px`);
-                m.style.setProperty("--m-rot", `${rot.toFixed(2)}deg`);
+                const t = (r.top + r.height * 0.5) / vh;
+                const offset = (0.5 - t) * 10;
+                const rot = (0.5 - t) * (idx % 2 ? -1 : 1) * 2;
+                el.style.setProperty("--m-media", `${offset.toFixed(2)}px`);
+                el.style.setProperty("--m-rot", `${rot.toFixed(2)}deg`);
             });
         };
 
         const onScroll = () => {
-            setProgress();
-            setParallax();
+            setBar();
+            setMotion();
         };
 
         onScroll();
@@ -312,17 +317,17 @@
     // Touch ripple (mobile only)
     // =========================
     (() => {
-        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-        if (!isTouch) return;
+        const touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        if (!touch) return;
 
         const targets = $$(".btn, .site-nav__link, .site-nav__toggle");
         if (!targets.length) return;
 
         const addRipple = (e) => {
             const el = e.currentTarget;
-            const r = el.getBoundingClientRect();
-            const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
-            const y = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+            const box = el.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - box.left;
+            const y = (e.touches ? e.touches[0].clientY : e.clientY) - box.top;
 
             const span = document.createElement("span");
             span.className = "tap-ripple";
@@ -340,28 +345,27 @@
     // Mobile photo "hover-like" on scroll (first visit)
     // =========================
     (() => {
-        // только мобилка/тач + портрет
-        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-        const isPortrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
-        if (!isTouch || !isPortrait) return;
+        const touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        const portrait = window.matchMedia("(max-width: 1024px) and (orientation: portrait)").matches;
+        if (!touch || !portrait) return;
 
         const items = Array.from(document.querySelectorAll(".section__image-placeholder"));
         if (!items.length) return;
 
         document.body.classList.add("is-first-visit");
 
-        const clamp01 = (v) => Math.max(0, Math.min(1, v));
+        const clamp = (v) => Math.max(0, Math.min(1, v));
 
-        const computePeek = (el) => {
-            const r = el.getBoundingClientRect();
+        const peekFor = (el) => {
+            const box = el.getBoundingClientRect();
             const vh = window.innerHeight || 1;
 
-            const elCenter = r.top + r.height / 2;
+            const elCenter = box.top + box.height / 2;
             const viewCenter = vh / 2;
 
             const dist = Math.abs(elCenter - viewCenter);
             const norm = 1 - dist / (vh * 0.55);
-            return clamp01(norm);
+            return clamp(norm);
         };
 
         let raf = 0;
@@ -391,13 +395,13 @@
             const vh = window.innerHeight || 1;
 
             for (const el of items) {
-                const peek = computePeek(el);
+                const peek = peekFor(el);
                 el.style.setProperty("--m-peek", peek.toFixed(3));
 
                 if (!el.dataset.parLocked) {
-                    const r = el.getBoundingClientRect();
-                    const t = (r.top + r.height / 2) / vh;
-                    const par = clamp01(t);
+                    const box = el.getBoundingClientRect();
+                    const t = (box.top + box.height / 2) / vh;
+                    const par = clamp(t);
                     el.style.setProperty("--par", par.toFixed(3));
 
                     if (peek > 0.62) {

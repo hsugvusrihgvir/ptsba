@@ -349,6 +349,32 @@
         font-size: 0.85rem;
         padding: 0.3rem 0.6rem;
     }
+
+    .repair-quick__item,
+    .repair-cta-bar,
+    .repair-step,
+    .repair-note {
+        border-radius: 14px;
+    }
+
+    .repair-quick__item,
+    .repair-note {
+        padding: 0.75rem 0.85rem;
+    }
+
+    .repair-cta-bar {
+        padding: 0.85rem;
+    }
+
+    .repair-cta-bar__title {
+        font-size: 1rem;
+    }
+
+    .repair-cta-bar__sub,
+    .repair-step__text,
+    .repair-note {
+        font-size: 0.9rem;
+    }
 }
 
 /* Убедимся, что кнопки на мобилке растягиваются на всю ширину */

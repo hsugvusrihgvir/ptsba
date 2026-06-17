@@ -185,7 +185,7 @@
         transition: max-height 0.2s ease, opacity 0.18s ease;
     }
 
-    .site-nav__list--open {
+    .site-nav__list.is-open {
         max-height: 260px;
         opacity: 1;
         pointer-events: auto;

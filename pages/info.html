@@ -1,17 +1,30 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Открытая информация и контакты — Поволжский центр беспилотной авиации</title>
+    <title>Открытая информация, документы и контакты — Поволжский ЦБА</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="description" content="Официальная информация и контакты ООО «Поволжский ЦБА». Реквизиты, лицензия, режим работы, локальные нормативные акты.">
-    <link rel="stylesheet" href="../assets/style/main.css">
-    <link rel="stylesheet" href="../assets/style/pages.css">
-    <link rel="stylesheet" href="../assets/style/layout.css">
-    <link rel="stylesheet" href="../assets/style/header-footer.css">
-    <link rel="stylesheet" href="../assets/style/sections.css">
-    <link rel="stylesheet" href="../assets/style/hero.css">
-    <link rel="stylesheet" href="../assets/style/cards.css">
+    <meta name="description" content="Официальная информация ООО «Поволжский ЦБА»: реквизиты, лицензия, режим работы, контакты и локальные нормативные акты для скачивания.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ptsba.ru/pages/info.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Поволжский центр беспилотной авиации">
+    <meta property="og:title" content="Открытая информация, документы и контакты — Поволжский ЦБА">
+    <meta property="og:description" content="Официальная информация ООО «Поволжский ЦБА»: реквизиты, лицензия, режим работы, контакты и локальные нормативные акты для скачивания.">
+    <meta property="og:url" content="https://ptsba.ru/pages/info.html">
+    <meta property="og:image" content="https://ptsba.ru/assets/img/logo/logo500.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Открытая информация, документы и контакты — Поволжский ЦБА">
+    <meta name="twitter:description" content="Официальная информация ООО «Поволжский ЦБА»: реквизиты, лицензия, режим работы, контакты и локальные нормативные акты для скачивания.">
+    <meta name="theme-color" content="#0f3f2e">
+    <link rel="icon" href="../assets/img/logo/logo300.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/img/logo/logo300.png">
+
+
+
+
+
+
     <style>
         .info-table {
             width: 100%;
@@ -44,18 +57,21 @@
         }
         .documents-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
+            align-items: stretch;
         }
         .document-item {
-            padding: 0.9rem 1rem;
+            min-height: 92px;
+            padding: 1rem 1.05rem;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(148, 163, 184, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.9rem;
+            align-items: start;
             transition: all 0.2s ease;
         }
         .document-item:hover {
@@ -64,13 +80,25 @@
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
         }
         .document-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 108px;
+            padding: 0.42rem 0.7rem;
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.05);
             color: var(--link-color);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            line-height: 1.2;
+            white-space: nowrap;
         }
         .document-link:hover {
-            text-decoration: underline;
+            background: var(--link-color);
+            color: #ffffff;
+            text-decoration: none;
         }
         .document-status {
             font-size: 0.85rem;
@@ -127,22 +155,62 @@
             }
             .documents-grid {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .document-item {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.65rem;
+                min-height: 0;
+                padding: 0.85rem 0.9rem;
+            }
+            .document-link {
+                width: fit-content;
+                min-width: 0;
+                padding-inline: 0.75rem;
             }
             .map-iframe {
                 height: 300px;
             }
         }
     </style>
+    <link rel="stylesheet" href="../assets/style/site.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"></noscript>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Поволжский центр беспилотной авиации",
+        "url": "https://ptsba.ru/pages/info.html",
+        "image": "https://ptsba.ru/assets/img/logo/logo500.png",
+        "description": "Официальная информация ООО «Поволжский ЦБА»: реквизиты, лицензия, режим работы, контакты и локальные нормативные акты для скачивания.",
+        "telephone": [
+                "+7 917 984-58-76",
+                "+7 937 633-65-29"
+        ],
+        "email": "ptsba@list.ru",
+        "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "RU",
+                "addressRegion": "Саратовская область",
+                "addressLocality": "Балашов",
+                "streetAddress": "улица Титова, 21Г"
+        },
+        "sameAs": [
+                                "https://t.me/ptsbabalashov"
+        ]
+}
+    </script>
 </head>
 <body class="page">
 <a id="top"></a>
 <header class="site-header">
     <div class="site-header__inner">
         <a class="site-header__logo" href="../index.html">
-            <img class="site-header__logo-img" src="../assets/img/logo/logo300.png" srcset="../assets/img/logo/logo300.png 1x, ../assets/img/logo/logo500.png 2x" alt="Поволжский центр беспилотной авиации" width="70" height="70">
+            <img decoding="async" class="site-header__logo-img" src="../assets/img/logo/logo300.png" srcset="../assets/img/logo/logo300.png 1x, ../assets/img/logo/logo500.png 2x" alt="Поволжский центр беспилотной авиации" width="70" height="70">
             <div class="site-header__logo-text">
                 <span class="site-header__logo-title">Поволжский центр беспилотной авиации</span>
                 <span class="site-header__logo-subtitle">Обработка полей дронами и обучение пилотов</span>
@@ -156,7 +224,6 @@
                 <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
                 <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
                 <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
-                <li class="site-nav__item"><a href="news.html" class="site-nav__link">Новости</a></li>
                 <li class="site-nav__item"><a href="info.html" class="site-nav__link is-active">Информация</a></li>
             </ul>
         </nav>
@@ -211,7 +278,7 @@
                         </tr>
                         <tr>
                             <td>Адрес электронной почты</td>
-                            <td>info@company.org</td>
+                            <td>ptsba@list.ru</td>
                         </tr>
                         <tr>
                             <td>Руководитель</td>
@@ -219,7 +286,7 @@
                         </tr>
                         <tr>
                             <td>Лицензия на образовательную деятельность</td>
-                            <td>Л035-01279-64/01006952 от 25.12.2023 г. <a href="#" class="document-link">Подробнее</a></td>
+                            <td>Л035-01279-64/01006952 от 25.12.2023 г.</td>
                         </tr>
                         <tr>
                             <td>Представительства и филиалы</td>
@@ -242,67 +309,67 @@
                     <div class="documents-grid">
                         <div class="document-item">
                             <span>1. Положение о правилах распорядка</span>
-                            <a href="https://ptsba.ru/otk/1-polozhenie-o-pravilah-rasporyadka.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/1Положение о правилах распорядка.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>2. 2.22_Положение об ЭО и ДОТ</span>
-                            <a href="https://ptsba.ru/otk/2.22-polozhenie-ob-eo-i-dot.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/2.22_Положение об ЭО и ДОТ.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>3. О комиссии по урегулированию споров</span>
-                            <span class="document-status status-dev">В разработке</span>
+                            <a href="../docs/о комиссии по урегулированию споров.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>4. Положение о конфликте интересов</span>
-                            <a href="https://ptsba.ru/otk/4-polozhenie-o-konflikte-interesov.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о конфликте интересов.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>5. Положение о порядке перевода, отчисления, восстановления</span>
-                            <a href="https://ptsba.ru/otk/5-polozhenie-o-poryadke-perevoda-otchisleniya-vosstanovleniya.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о порядке перевода, отчисления, восстановления.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>6. Положение о порядке пользования учебными пособиями</span>
-                            <span class="document-status status-na">Нет в доступе</span>
+                            <a href="../docs/Положение о порядке пользования учебными пособиями.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>7. Положение о порядке проведения самообследования</span>
-                            <a href="https://ptsba.ru/otk/7-polozhenie-o-poryadke-provedeniya-samoobsledovaniya.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о порядке проведения самообследования.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>8. Положение о порядке рассмотрения обращений граждан</span>
-                            <a href="https://ptsba.ru/otk/8-polozhenie-o-poryadke-rassmotreniya-obrashhenij-grazhdan.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о порядке рассмотрения обращений граждан.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>9. Положение о рабочей группе по противодействию и предотвращению коррупции</span>
-                            <a href="https://ptsba.ru/otk/9-polozhenie-o-rabochej-gruppe-po-protivodejstviyu-i-predotvrashheniyu-korrupcii.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о рабочей группе по противодействию и предотвращению коррупции.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>10. Положение о режиме занятий обучающихся и формах обучения</span>
-                            <span class="document-status status-dev">В разработке</span>
+                            <a href="../docs/Положение о режиме занятий обучающихся и формах обучения.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>11. Положение о совете обучающихся</span>
-                            <a href="https://ptsba.ru/otk/11-polozhenie-o-sovete-obuchayushhihsya.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение о совете обучающихся.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>12. Положение об информационной открытости</span>
-                            <a href="https://ptsba.ru/otk/12-polozhenie-ob-informatsionnoj-otkrytosti.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение об информационной открытости.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>13. Положение об обработке персональных данных работников</span>
-                            <a href="https://ptsba.ru/otk/13-polozhenie-ob-obrabotke-personalnyh-dannyh-rabotnikov.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Положение об обработке персональных данных работников.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>14. Положение об утверждении порядка заполнения выдачи, учета и хранения документов о квалификации</span>
-                            <span class="document-status status-na">Нет в доступе</span>
+                            <a href="../docs/Положение об утверждении порядка заполнения выдачи, учета и хранения документов о квалификации.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>15. Правила внутреннего трудового распорядка</span>
-                            <a href="https://ptsba.ru/otk/15-pravila-vnutrennego-trudovogo-rasporyadka.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/Правила внутреннего трудового распорядка.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                         <div class="document-item">
                             <span>16. Правила приема в учебный центр</span>
-                            <a href="https://ptsba.ru/otk/16-pravila-priema-v-uchebnyj-tsentr.pdf" class="document-link" target="_blank">скачать</a>
+                            <a href="../docs/правила приема в учебный центр.pdf" class="document-link" target="_blank" rel="noopener">Скачать PDF</a>
                         </div>
                     </div>
                 </div>
@@ -364,13 +431,13 @@
                             </div>
                             <div class="contacts__item">
                                 <h4 class="contacts__label">Электронная почта</h4>
-                                <p class="contacts__value"><a href="mailto:info@company.org">info@company.org</a></p>
+                                <p class="contacts__value"><a href="mailto:ptsba@list.ru">ptsba@list.ru</a></p>
                             </div>
                             <div class="contacts__item">
                                 <h4 class="contacts__label">Телефон для связи</h4>
                                 <p class="contacts__value">
-                                    <a href="tel:+79179845875">+7 (980) 858-08-27</a><br>
-                                    <a href="tel:+79179845875">+7 (917) 984-58-75</a>
+                                    <a href="tel:+79179845876">+7 (917) 984-58-76</a><br>
+                                    <a href="tel:+79376336529">+7 (937) 633-65-29</a>
                                 </p>
                             </div>
                         </div>
@@ -406,7 +473,7 @@
             </ul>
         </div>
         <div class="site-footer__right">
-            <p class="site-footer__copy">© <span id="js-year">2025</span> ООО «Поволжский центр беспилотной авиации»<br>
+            <p class="site-footer__copy">© <span id="js-year">2026</span> ООО «Поволжский центр беспилотной авиации»<br>
                 ИНН 6440044313 ОГРН 1236400004554</p>
             <p class="site-footer__disclaimer">Сайт не является публичной офертой и носит информационный характер.</p>
         </div>
