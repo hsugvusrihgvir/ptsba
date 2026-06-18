@@ -149,6 +149,7 @@ h4 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.45rem;
     padding: 0.55rem 1.4rem;
     border-radius: var(--btn-radius);
     border: 1px solid transparent;
@@ -165,6 +166,23 @@ h4 {
             color 0.18s ease,
             border-color 0.18s ease,
             transform 0.1s ease;
+}
+
+.btn__icon {
+    width: 1.08rem;
+    height: 1.08rem;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
+.btn--max-channel .btn__icon,
+.btn--telegram-channel .btn__icon,
+.btn--vk-project .btn__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
 }
 
 .btn--primary {
@@ -201,14 +219,54 @@ h4 {
 }
 
 .btn--telegram-channel {
-    color: #ffffff;
-    background: #229ed9;
-    border-color: #229ed9;
+    color: #147da8;
+    background: rgba(34, 158, 217, 0.12);
+    border-color: rgba(34, 158, 217, 0.32);
 }
 
 .btn--telegram-channel:hover {
+    color: #ffffff;
     background: #178ac0;
     border-color: #178ac0;
+}
+
+.btn--max-channel {
+    color: #ffffff;
+    background: #1f2937;
+    border-color: #1f2937;
+}
+
+.btn--max-channel:hover {
+    color: #ffffff;
+    background: #111827;
+    border-color: #111827;
+}
+
+.btn--vk-project {
+    color: #1d4ed8;
+    background: rgba(37, 99, 235, 0.1);
+    border-color: rgba(37, 99, 235, 0.24);
+}
+
+.btn--vk-project:hover {
+    color: #ffffff;
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn--vk-project-strong {
+    color: #1d4ed8;
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.62);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
+    font-weight: 700;
+}
+
+.btn--vk-project-strong:hover {
+    color: #ffffff;
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    box-shadow: 0 14px 32px rgba(37, 99, 235, 0.28);
 }
 
 /* JS enhancements */

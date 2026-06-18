@@ -272,6 +272,33 @@
     box-shadow: 0 12px 26px rgba(37, 99, 235, 0.38);
 }
 
+.hero__btn.btn--max-channel {
+    background: #1f2937;
+    border-color: #1f2937;
+    color: #ffffff;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.26);
+}
+
+.hero__btn.btn--max-channel:hover {
+    background: #111827;
+    border-color: #111827;
+    color: #ffffff;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.32);
+}
+
+.hero__btn.btn--telegram-channel {
+    background: rgba(34, 158, 217, 0.12);
+    border-color: rgba(34, 158, 217, 0.34);
+    color: #147da8;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.hero__btn.btn--telegram-channel:hover {
+    background: #178ac0;
+    border-color: #178ac0;
+    color: #ffffff;
+}
+
 /* лёгкий вертикальный отступ текста на больших */
 
 @media (min-width: 800px) {

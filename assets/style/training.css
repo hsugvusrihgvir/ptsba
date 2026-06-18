@@ -286,19 +286,20 @@
 }
 
 .training-checklist li {
-    padding: 0.85rem 0.95rem;
+    padding: 0.85rem 0.95rem 0.85rem 2.65rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(148, 163, 184, 0.28);
     position: relative;
-    padding-left: 2.1rem;
 }
 
 .training-checklist li::before {
     content: "✓";
     position: absolute;
     left: 0.75rem;
-    top: 0.75rem;
+    top: 0.85rem;
+    width: 1.1rem;
+    text-align: center;
     font-weight: 900;
     color: rgba(43, 135, 90, 0.9);
 }
@@ -353,9 +354,12 @@
 
     .training-quick__item,
     .training-card__body,
-    .training-note,
-    .training-checklist li {
+    .training-note {
         padding: 0.8rem 0.9rem;
+    }
+
+    .training-checklist li {
+        padding: 0.8rem 0.9rem 0.8rem 2.55rem;
     }
 
     .training-cta-bar {

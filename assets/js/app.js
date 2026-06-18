@@ -247,6 +247,55 @@
     const year = $("#js-year");
     if (year) year.textContent = String(new Date().getFullYear());
 
+    // -------------------------
+    // Reviews slider
+    // -------------------------
+    (() => {
+        const box = $("[data-reviews]");
+        if (!box) return;
+
+        const track = $("[data-reviews-track]", box);
+        const prev = $("[data-reviews-prev]", box);
+        const next = $("[data-reviews-next]", box);
+        const count = $("[data-reviews-count]", box);
+        const dots = $("[data-reviews-dots]", box);
+        const cards = track ? $$(".review-card", track) : [];
+
+        if (!track || cards.length < 2 || !prev || !next) return;
+
+        let index = 0;
+
+        const dotBtns = cards.map((_, i) => {
+            const dot = document.createElement("button");
+            dot.className = "reviews-dot";
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Показать отзыв ${i + 1}`);
+            dot.addEventListener("click", () => go(i));
+            if (dots) dots.append(dot);
+            return dot;
+        });
+
+        const go = (to) => {
+            index = (to + cards.length) % cards.length;
+            track.style.transform = `translateX(${-index * 100}%)`;
+
+            cards.forEach((card, i) => {
+                card.setAttribute("aria-hidden", String(i !== index));
+            });
+
+            dotBtns.forEach((dot, i) => {
+                dot.classList.toggle("is-active", i === index);
+            });
+
+            if (count) count.textContent = `${index + 1} / ${cards.length}`;
+        };
+
+        prev.addEventListener("click", () => go(index - 1));
+        next.addEventListener("click", () => go(index + 1));
+
+        go(0);
+    })();
+
     // =========================
     // MOBILE / PORTRAIT effects
     // =========================
