@@ -248,6 +248,58 @@
     if (year) year.textContent = String(new Date().getFullYear());
 
     // -------------------------
+    // Cookie notice
+    // -------------------------
+    (() => {
+        const key = "ptsba_cookie_notice";
+        const okValue = "accepted";
+
+        const storage = (() => {
+            try {
+                const test = `${key}_test`;
+                window.localStorage.setItem(test, "1");
+                window.localStorage.removeItem(test);
+                return window.localStorage;
+            } catch {
+                return null;
+            }
+        })();
+
+        if (storage && storage.getItem(key) === okValue) return;
+
+        const policyHref = window.location.pathname.includes("/pages/")
+            ? "policy.html"
+            : "pages/policy.html";
+
+        const notice = document.createElement("div");
+        notice.className = "cookie-notice";
+        notice.setAttribute("role", "region");
+        notice.setAttribute("aria-label", "Уведомление о cookie");
+        notice.innerHTML = `
+            <p class="cookie-notice__text">
+                Сайт использует cookie, карту и аналитику для корректной работы.
+                Подробнее — в <a href="${policyHref}">политике конфиденциальности</a>.
+            </p>
+            <button class="cookie-notice__button" type="button">Понятно</button>
+        `;
+
+        document.body.append(notice);
+
+        requestAnimationFrame(() => {
+            notice.classList.add("is-visible");
+        });
+
+        const close = () => {
+            if (storage) storage.setItem(key, okValue);
+            notice.classList.remove("is-visible");
+            window.setTimeout(() => notice.remove(), 220);
+        };
+
+        const button = $(".cookie-notice__button", notice);
+        if (button) button.addEventListener("click", close);
+    })();
+
+    // -------------------------
     // Reviews slider
     // -------------------------
     (() => {

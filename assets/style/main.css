@@ -342,6 +342,93 @@ h4 {
     pointer-events: auto;
 }
 
+/* cookie notice */
+
+.cookie-notice {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    z-index: 9998;
+    width: min(720px, calc(100vw - 32px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.78rem 0.9rem 0.78rem 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--text-soft);
+    box-shadow: 0 16px 42px rgba(15, 23, 42, 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    transform: translate(-50%, 12px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cookie-notice.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.cookie-notice__text {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+
+.cookie-notice__text a {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.cookie-notice__button {
+    flex: 0 0 auto;
+    border: 1px solid rgba(37, 99, 235, 0.28);
+    border-radius: 999px;
+    padding: 0.45rem 0.95rem;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--link-hover-color);
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.cookie-notice__button:hover {
+    background: var(--link-color);
+    border-color: var(--link-color);
+    color: #ffffff;
+}
+
+@media (max-width: 640px) {
+    .cookie-notice {
+        bottom: 12px;
+        width: calc(100vw - 24px);
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.65rem;
+        padding: 0.82rem;
+        border-radius: 12px;
+    }
+
+    .cookie-notice__text {
+        font-size: 0.8rem;
+    }
+
+    .cookie-notice__text a {
+        white-space: normal;
+    }
+
+    .cookie-notice__button {
+        width: 100%;
+        padding-block: 0.52rem;
+    }
+}
+
 /* =========================
    WOW (clean) вЂ” NO CURSOR GLOW, NO PURPLE
    Parallax: hero + "services" section

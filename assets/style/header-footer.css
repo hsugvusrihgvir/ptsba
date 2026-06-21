@@ -31,9 +31,10 @@
 
 .site-header__logo-img {
     display: block;
-    width: var(--logo-size);
+    width: calc(var(--logo-size) * 1.453125);
     height: var(--logo-size);
     object-fit: contain;
+    flex: 0 0 auto;
 }
 
 .site-header__logo-text {

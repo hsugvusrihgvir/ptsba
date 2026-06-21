@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сведения об образовательной организации — Поволжский ЦБА</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Документы, образовательная программа и сведения об учебном центре ООО «Поволжский ЦБА».">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ptsba.ru/pages/education-info.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Поволжский центр беспилотной авиации">
+    <meta property="og:title" content="Сведения об образовательной организации — Поволжский ЦБА">
+    <meta property="og:description" content="Документы, образовательная программа и сведения об учебном центре ООО «Поволжский ЦБА».">
+    <meta property="og:url" content="https://ptsba.ru/pages/education-info.html">
+    <meta property="og:image" content="https://ptsba.ru/assets/img/logo/logo500.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Сведения об образовательной организации — Поволжский ЦБА">
+    <meta name="twitter:description" content="Документы, образовательная программа и сведения об учебном центре ООО «Поволжский ЦБА».">
+    <meta name="theme-color" content="#0f3f2e">
+    <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/img/logo/logo300.png">
+    <link rel="stylesheet" href="../assets/style/site.min.css">
+
+    <style>
+        .edu-layout {
+            display: grid;
+            gap: 1.6rem;
+        }
+        .edu-block {
+            padding: 0;
+        }
+        .edu-block__title {
+            margin: 0 0 0.75rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+            font-size: 1.05rem;
+        }
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+        .edu-card {
+            padding: 0.95rem 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 10px;
+            background: rgba(248, 250, 252, 0.78);
+        }
+        .edu-card__title {
+            margin: 0 0 0.45rem;
+            font-size: 0.96rem;
+        }
+        .edu-list {
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+        .edu-list li + li {
+            margin-top: 0.32rem;
+        }
+        .edu-note {
+            color: #64748b;
+        }
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0.85rem;
+            margin-top: 1rem;
+            align-items: stretch;
+        }
+        .doc-card {
+            min-height: 86px;
+            padding: 0.95rem 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.8rem;
+            align-items: start;
+        }
+        .doc-card--muted {
+            background: rgba(248, 250, 252, 0.78);
+        }
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 104px;
+            padding: 0.42rem 0.68rem;
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.05);
+            color: var(--link-color);
+            font-size: 0.84rem;
+            text-decoration: none;
+            font-weight: 600;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .doc-link:hover {
+            background: var(--link-color);
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .doc-status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.36rem 0.56rem;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 999px;
+            background: rgba(100, 116, 139, 0.08);
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .docs-section + .docs-section {
+            margin-top: 1.35rem;
+        }
+        .docs-section__title {
+            margin: 0;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+            .doc-card {
+                grid-template-columns: minmax(0, 1fr);
+                min-height: 0;
+            }
+            .doc-link {
+                width: fit-content;
+                min-width: 0;
+            }
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"></noscript>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Поволжский центр беспилотной авиации",
+        "url": "https://ptsba.ru/pages/education-info.html",
+        "image": "https://ptsba.ru/assets/img/logo/logo500.png",
+        "description": "Документы, образовательная программа и сведения об учебном центре ООО «Поволжский ЦБА».",
+        "telephone": [
+                "+7 937 633-65-29",
+                "+7 917 984-58-76"
+        ],
+        "email": "ptsba@list.ru",
+        "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "RU",
+                "addressRegion": "Саратовская область",
+                "addressLocality": "Балашов",
+                "streetAddress": "улица Титова, 21Г/2"
+        },
+        "sameAs": [
+                "https://t.me/ptsbabalashov",
+                "https://max.ru/join/8lZ5_Gffm3tkGPWJAYpJ2B8XTpGCgx8KN9UKCOglifs"
+        ]
+}
+    </script>
+</head>
+<body class="page">
+<a id="top"></a>
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="../index.html">
+            <img decoding="async" class="site-header__logo-img" src="../assets/img/logo/logo300.png" srcset="../assets/img/logo/logo300.png 1x, ../assets/img/logo/logo500.png 2x" alt="Поволжский центр беспилотной авиации" width="102" height="70">
+            <div class="site-header__logo-text">
+                <span class="site-header__logo-title">Поволжский центр беспилотной авиации</span>
+                <span class="site-header__logo-subtitle">Обработка полей дронами и обучение пилотов</span>
+            </div>
+        </a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav__toggle" type="button" aria-expanded="false" aria-label="Открыть меню">☰</button>
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
+                <li class="site-nav__item"><a href="training.html" class="site-nav__link">Обучение</a></li>
+                <li class="site-nav__item"><a href="services.html" class="site-nav__link">Услуги агродронов</a></li>
+                <li class="site-nav__item"><a href="repair.html" class="site-nav__link">Ремонт</a></li>
+                <li class="site-nav__item"><a href="info.html" class="site-nav__link is-active">Информация</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="page-main">
+    <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a href="../index.html">Главная</a>
+            <span aria-hidden="true">/</span>
+            <a href="info.html">Информация</a>
+            <span aria-hidden="true">/</span>
+            <span>Сведения об образовательной организации</span>
+        </nav>
+        <h1 class="page-title">Сведения об образовательной организации</h1>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Официальные сведения</h2>
+            </div>
+            <div class="edu-layout">
+                <section class="edu-block" aria-labelledby="edu-basic-title">
+                    <h3 class="edu-block__title" id="edu-basic-title">Основные сведения</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Организация</h4>
+                            <ul class="edu-list">
+                                <li><strong>Полное наименование:</strong> ООО «Поволжский центр беспилотной авиации»</li>
+                                <li><strong>Руководитель:</strong> Емельянов Олег Николаевич, генеральный директор</li>
+                                <li><strong>Филиалы и представительства:</strong> отсутствуют</li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Адреса</h4>
+                            <ul class="edu-list">
+                                <li><strong>Фактический адрес:</strong> Саратовская область, г. Балашов, улица Титова 21Г/2</li>
+                                <li><strong>Юридический адрес:</strong> 412307, Саратовская область, Балашовский р-н, г. Балашов, Пугачевская ул., д. 3в</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu-block" aria-labelledby="edu-program-title">
+                    <h3 class="edu-block__title" id="edu-program-title">Образование</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Программа</h4>
+                            <ul class="edu-list">
+                                <li><strong>Программа:</strong> дополнительная профессиональная программа повышения квалификации «Управление персоналом»</li>
+                                <li><strong>Форма обучения:</strong> дистанционная, с применением электронного обучения и дистанционных образовательных технологий</li>
+                                <li><strong>Срок реализации:</strong> 1 неделя</li>
+                                <li><strong>Трудоемкость:</strong> 16 академических часов</li>
+                                <li><strong>Документ по окончании:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Язык обучения:</strong> русский</li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Учебные документы</h4>
+                            <ul class="edu-list">
+                                <li><strong>Образовательная программа:</strong> размещена в разделе документов</li>
+                                <li><strong>Учебный план:</strong> размещен в составе образовательной программы</li>
+                                <li><strong>Календарный учебный график:</strong> <span class="edu-note">документ подготавливается к размещению</span></li>
+                                <li><strong>Рабочие программы, оценочные и методические материалы:</strong> <span class="edu-note">документы подготавливаются к размещению</span></li>
+                                <li><strong>Образовательные стандарты и требования:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu-block" aria-labelledby="edu-mto-title">
+                    <h3 class="edu-block__title" id="edu-mto-title">Материально-техническое обеспечение и доступная среда</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Объекты и средства обучения</h4>
+                            <ul class="edu-list">
+                                <li><strong>Учебные кабинеты:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Объекты для практических занятий:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Библиотека:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Объекты спорта:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Средства обучения и воспитания:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Информационная среда и доступность</h4>
+                            <ul class="edu-list">
+                                <li><strong>Доступ к информационным системам и сетям:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Электронные образовательные ресурсы:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Доступ в здание для инвалидов и лиц с ОВЗ:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Специальные технические средства обучения:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Условия охраны здоровья обучающихся:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu-block" aria-labelledby="edu-paid-title">
+                    <h3 class="edu-block__title" id="edu-paid-title">Платные услуги, прием и социальные условия</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Платные образовательные услуги</h4>
+                            <ul class="edu-list">
+                                <li><strong>Порядок оказания платных образовательных услуг:</strong> размещен в локальных нормативных актах</li>
+                                <li><strong>Основания и порядок снижения стоимости:</strong> размещены в локальных нормативных актах</li>
+                                <li><strong>Образец договора на обучение:</strong> <span class="edu-note">документ подготавливается к размещению</span></li>
+                                <li><strong>Приказ об утверждении стоимости обучения:</strong> <span class="edu-note">документ подготавливается к размещению</span></li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Прием и социальные условия</h4>
+                            <ul class="edu-list">
+                                <li><strong>Вакантные места для приема и перевода:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Стипендии и меры поддержки:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Организация питания:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Общежитие и интернат:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu-block" aria-labelledby="edu-finance-title">
+                    <h3 class="edu-block__title" id="edu-finance-title">Финансово-хозяйственная деятельность и контроль</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Финансово-хозяйственная деятельность</h4>
+                            <ul class="edu-list">
+                                <li><strong>За счет бюджетных ассигнований федерального бюджета:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>За счет бюджетов субъектов Российской Федерации:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>За счет местных бюджетов:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>По договорам об оказании платных образовательных услуг:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Поступление финансовых и материальных средств:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Расходование финансовых и материальных средств:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>План финансово-хозяйственной деятельности / бюджетная смета:</strong> <span class="edu-note">документ подготавливается к размещению</span></li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Контроль и самообследование</h4>
+                            <ul class="edu-list">
+                                <li><strong>Отчет о самообследовании:</strong> <span class="edu-note">документ подготавливается к размещению</span></li>
+                                <li><strong>Предписания контролирующих органов:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Отчеты об исполнении предписаний:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu-block" aria-labelledby="edu-staff-title">
+                    <h3 class="edu-block__title" id="edu-staff-title">Кадровые сведения и международное сотрудничество</h3>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Педагогический состав</h4>
+                            <ul class="edu-list">
+                                <li><strong>Сведения о педагогических работниках:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-card__title">Международное сотрудничество</h4>
+                            <ul class="edu-list">
+                                <li><strong>Заключенные договоры с иностранными и международными организациями:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Планируемые к заключению договоры:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                                <li><strong>Международная аккредитация образовательных программ:</strong> <span class="edu-note">сведения подготавливаются к размещению</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Документы</h2>
+            </div>
+            <div class="docs-section">
+                <h3 class="docs-section__title">Учредительные и разрешительные документы</h3>
+                <div class="docs-grid">
+                    <div class="doc-card doc-card--muted"><span>Устав организации</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>Выписка из реестра лицензий</span><span class="doc-status">Подготавливается</span></div>
+                </div>
+            </div>
+            <div class="docs-section">
+                <h3 class="docs-section__title">Образовательная деятельность</h3>
+                <div class="docs-grid">
+                    <div class="doc-card"><span>Образовательная программа</span><a href="../docs/Программа.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Учебный план</span><a href="../docs/Программа.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card doc-card--muted"><span>Календарный учебный график</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>Рабочие программы модулей</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>Оценочные материалы</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>Методические материалы</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card"><span>Положение о режиме занятий обучающихся и формах обучения</span><a href="../docs/Положение о режиме занятий обучающихся и формах обучения.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Правила приема в учебный центр</span><a href="../docs/правила приема в учебный центр.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Положение о правилах распорядка</span><a href="../docs/1Положение о правилах распорядка.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Положение о порядке перевода, отчисления, восстановления</span><a href="../docs/Положение о порядке перевода, отчисления, восстановления.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Положение об утверждении порядка заполнения выдачи, учета и хранения документов о квалификации</span><a href="../docs/Положение об утверждении порядка заполнения выдачи, учета и хранения документов о квалификации.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                </div>
+            </div>
+            <div class="docs-section">
+                <h3 class="docs-section__title">Платные образовательные услуги</h3>
+                <div class="docs-grid">
+                    <div class="doc-card"><span>Положение о порядке предоставления платных образовательных услуг</span><a href="../docs/о порядке предоставления платных обр услуг.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Положение об основаниях и порядке снижения стоимости платных образовательных услуг</span><a href="../docs/Положение об основаниях и порядке снижения стоимости платных образовательных услуг docx.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card doc-card--muted"><span>Образец договора на обучение</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>Приказ об утверждении стоимости обучения</span><span class="doc-status">Подготавливается</span></div>
+                </div>
+            </div>
+            <div class="docs-section">
+                <h3 class="docs-section__title">Управление, права обучающихся и локальные акты</h3>
+                <div class="docs-grid">
+                    <div class="doc-card"><span>О комиссии по урегулированию споров</span><a href="../docs/о комиссии по урегулированию споров.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                    <div class="doc-card"><span>Правила внутреннего трудового распорядка</span><a href="../docs/Правила внутреннего трудового распорядка.pdf" class="doc-link" target="_blank" rel="noopener">Скачать PDF</a></div>
+                </div>
+            </div>
+            <div class="docs-section">
+                <h3 class="docs-section__title">Отчеты, контроль и финансово-хозяйственная деятельность</h3>
+                <div class="docs-grid">
+                    <div class="doc-card doc-card--muted"><span>Отчет о самообследовании</span><span class="doc-status">Подготавливается</span></div>
+                    <div class="doc-card doc-card--muted"><span>План финансово-хозяйственной деятельности / бюджетная смета</span><span class="doc-status">Подготавливается</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="site-footer">
+    <div class="site-footer__inner container">
+        <div class="site-footer__left">
+            <p class="site-footer__title">Поволжский центр беспилотной авиации</p>
+            <p class="site-footer__text">Официальные сведения и документы учебного центра.</p>
+        </div>
+        <div class="site-footer__middle">
+            <ul class="site-footer__nav">
+                <li><a href="#top">Наверх</a></li>
+                <li><a href="info.html">Информация и контакты</a></li>
+                <li><a href="policy.html">Политика конфиденциальности</a></li>
+                <li><a href="https://t.me/ptsbabalashov" target="_blank" rel="noopener">Канал в Telegram</a></li>
+            </ul>
+        </div>
+        <div class="site-footer__right">
+            <p class="site-footer__copy">© <span id="js-year">2026</span> ООО «Поволжский центр беспилотной авиации»<br>
+                ИНН 6440044313 ОГРН 1236400004554</p>
+            <p class="site-footer__disclaimer">Сайт не является публичной офертой и носит информационный характер.</p>
+        </div>
+    </div>
+    <script defer src="../assets/js/app.js"></script>
+</footer>
+</body>
+</html>
+
+
+
+

@@ -22,8 +22,13 @@
     </url>
     <url>
         <loc>https://ptsba.ru/pages/info.html</loc>
-        <lastmod>2026-06-17</lastmod>
+        <lastmod>2026-06-21</lastmod>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ptsba.ru/pages/education-info.html</loc>
+        <lastmod>2026-06-21</lastmod>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://ptsba.ru/pages/policy.html</loc>
