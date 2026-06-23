@@ -5,4 +5,3 @@
 
 https://ptsba.ru/
 
-https://hsugvusrihgvir.github.io/example_site/
